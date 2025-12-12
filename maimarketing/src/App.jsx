@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 import SplashScreen from './components/SplashScreen';
+import InstallPrompt from './components/InstallPrompt';
 
 // Scroll to top on route change component
 const ScrollToTop = () => {
@@ -29,6 +30,7 @@ function App() {
           <ScrollToTop />
           <div className="min-h-screen font-sans selection:bg-brand-blue/30 selection:text-white bg-brand-dark animate-fade-in">
             <Navbar />
+            <InstallPrompt />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/portfolio" element={<Portfolio />} />

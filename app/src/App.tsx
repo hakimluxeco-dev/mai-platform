@@ -12,6 +12,7 @@ import CustomSystems from "./components/CustomSystems";
 import About from "./components/About";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import NotFound from "./components/NotFound";
+import InstallPrompt from "./components/InstallPrompt";
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -27,6 +28,7 @@ function App() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
+        <InstallPrompt />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/whatsapp-assistant" element={<WhatsappAssistant />} />

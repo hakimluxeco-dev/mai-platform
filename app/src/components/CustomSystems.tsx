@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+import SEO from "./SEO";
 import { Sparkles, Workflow, BarChart3, FileText, Wrench, ArrowRight } from "lucide-react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -21,6 +21,8 @@ export default function CustomSystems() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // ... (keeping lines 25-80 implicit in other chunks if needed, but here we just target the top import and return block)
 
   const capabilities = [
     {
@@ -81,10 +83,11 @@ export default function CustomSystems() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
-      <Helmet>
-        <title>Custom Systems - MAI Business Solutions</title>
-        <meta name="description" content="Bespoke automation solutions built specifically for your business needs" />
-      </Helmet>
+      <SEO
+        title="Custom Systems - Mai Business Solutions"
+        description="Bespoke automation solutions built specifically for your business needs"
+        canonicalUrl="/custom-systems"
+      />
 
       <Navbar />
 
@@ -203,7 +206,7 @@ export default function CustomSystems() {
       {/* CTA Section with Form */}
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-cyan-500/10"></div>
-        
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">

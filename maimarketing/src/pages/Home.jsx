@@ -5,9 +5,12 @@ import UseCases from '../components/UseCases';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 
+import SEO from '../components/SEO';
+
 const Home = () => {
     return (
         <>
+            <SEO />
             <Hero />
             <Work />
             <Services />

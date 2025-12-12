@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const allProjects = [
     {
@@ -81,8 +82,15 @@ const Portfolio = () => {
         ? allProjects
         : allProjects.filter(p => p.category === filter || p.category.includes(filter));
 
+
+
     return (
         <div className="pt-24 min-h-screen bg-brand-dark">
+            <SEO
+                title="Our Work | Mai Marketing Solutions"
+                description="Explore our portfolio of data-driven success stories. See how we've helped businesses achieve over 300% growth through AI marketing."
+                canonicalUrl="/marketing/portfolio"
+            />
             <div className="container mx-auto px-6 py-12">
                 <div className="text-center mb-16">
                     <h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -100,8 +108,8 @@ const Portfolio = () => {
                             key={cat}
                             onClick={() => setFilter(cat)}
                             className={`px-6 py-2 rounded-full border transition-all duration-300 ${filter === cat
-                                    ? 'bg-brand-blue border-brand-blue text-white shadow-lg shadow-brand-blue/25'
-                                    : 'bg-white/5 border-white/10 text-gray-400 hover:border-brand-blue/50 hover:text-white'
+                                ? 'bg-brand-blue border-brand-blue text-white shadow-lg shadow-brand-blue/25'
+                                : 'bg-white/5 border-white/10 text-gray-400 hover:border-brand-blue/50 hover:text-white'
                                 }`}
                         >
                             {cat}

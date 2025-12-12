@@ -39,6 +39,14 @@ const Navbar = () => {
                             {link.name}
                         </Link>
                     ))}
+                    <div className="h-6 w-px bg-white/10 mx-2"></div>
+                    <a
+                        href="/"
+                        className="text-brand-cyan hover:text-white transition-colors text-sm font-medium flex items-center gap-1 group"
+                    >
+                        Business Systems
+                        <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+                    </a>
                     <Button>Get Started</Button>
                 </div>
 
@@ -68,6 +76,12 @@ const Navbar = () => {
                                     {link.name}
                                 </Link>
                             ))}
+                            <a
+                                href="/"
+                                className="text-brand-cyan hover:text-white block py-2 font-medium"
+                            >
+                                Visit Business Systems →
+                            </a>
                             <Button className="w-full">Get Started</Button>
                         </div>
                     </motion.div>

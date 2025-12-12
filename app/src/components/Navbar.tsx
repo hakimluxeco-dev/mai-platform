@@ -73,6 +73,14 @@ export default function Navbar() {
             >
               About Us
             </Link>
+            <div className="h-6 w-px bg-gray-800 mx-2"></div>
+            <a
+              href="/marketing"
+              className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium flex items-center gap-1 group"
+            >
+              Marketing Agency
+              <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+            </a>
             <Button
               onClick={() => handleNavigation("contact")}
               className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white shadow-lg shadow-blue-500/30"
@@ -120,6 +128,12 @@ export default function Navbar() {
               >
                 About Us
               </Link>
+              <a
+                href="/marketing"
+                className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-left py-2 font-medium flex items-center gap-2"
+              >
+                Visit Marketing Agency →
+              </a>
               <Button
                 onClick={() => handleNavigation("contact")}
                 className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white w-full"

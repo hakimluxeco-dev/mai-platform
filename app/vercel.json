@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/marketing/:match*",
+      "destination": "https://YOUR_MARKETING_APP_URL.vercel.app/:match*"
     }
   ]
 }

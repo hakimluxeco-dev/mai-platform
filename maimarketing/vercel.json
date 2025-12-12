@@ -1,8 +1,8 @@
 {
     "rewrites": [
         {
-            "source": "/marketing/(.*)",
-            "destination": "/$1"
+            "source": "/marketing/:path*",
+            "destination": "/:path*"
         }
     ]
 }

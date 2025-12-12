@@ -1,8 +1,16 @@
 {
   "rewrites": [
     {
-      "source": "/marketing/:match*",
-      "destination": "https://mai-marketing.vercel.app/marketing/:match*"
+      "source": "/marketing",
+      "destination": "https://mai-marketing.vercel.app/"
+    },
+    {
+      "source": "/marketing/",
+      "destination": "https://mai-marketing.vercel.app/"
+    },
+    {
+      "source": "/marketing/:path*",
+      "destination": "https://mai-marketing.vercel.app/:path*"
     }
   ]
 }

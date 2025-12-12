@@ -39,6 +39,7 @@ const Navbar = () => {
                             {link.name}
                         </Link>
                     ))}
+                    <Button>Get Started</Button>
                     <div className="h-6 w-px bg-white/10 mx-2"></div>
                     <a
                         href="/"
@@ -47,7 +48,6 @@ const Navbar = () => {
                         Business Systems
                         <span className="group-hover:translate-x-0.5 transition-transform">→</span>
                     </a>
-                    <Button>Get Started</Button>
                 </div>
 
                 {/* Mobile Menu Button */}

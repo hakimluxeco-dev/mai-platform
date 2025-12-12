@@ -1,0 +1,22 @@
+<svg viewBox="0 0 500 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logo-gradient" x1="0" y1="0" x2="200" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stopColor="#2563eb"/>
+      <stop offset="1" stopColor="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="500" height="150" rx="20" fill="#0f1729"/>
+
+  {/* M */}
+  <path d="M40 110V30L80 80L120 30V110" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  {/* A (Arrow) */}
+  <path d="M150 110L190 30L230 110" stroke="url(#logo-gradient)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M165 80H215" stroke="url(#logo-gradient)" stroke-width="8" stroke-linecap="round"/>
+  
+  {/* I */}
+  <path d="M260 30V110" stroke="white" stroke-width="12" stroke-linecap="round"/>
+
+  {/* TEXT - Adjusted for square/icon usage if needed, but keeping full lockup here */}
+</svg>

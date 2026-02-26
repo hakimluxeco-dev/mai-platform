@@ -132,11 +132,18 @@ export default function Products() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group relative border-b sm:border-b-0 sm:border-r border-white/10 last:border-r-0 last:border-b-0 sm:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(even)]:border-r lg:[&:nth-child(4n)]:border-r-0 sm:[&:nth-child(1)]:border-b sm:[&:nth-child(2)]:border-b lg:[&:nth-child(1)]:border-b-0 lg:[&:nth-child(2)]:border-b-0 bg-transparent hover:bg-white/[0.02] transition-colors duration-500 overflow-hidden"
+              className="group relative border-b sm:border-b-0 sm:border-r border-white/10 last:border-r-0 last:border-b-0 sm:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(even)]:border-r lg:[&:nth-child(4n)]:border-r-0 sm:[&:nth-child(1)]:border-b sm:[&:nth-child(2)]:border-b lg:[&:nth-child(1)]:border-b-0 lg:[&:nth-child(2)]:border-b-0 bg-transparent transition-colors duration-500 overflow-hidden"
               onMouseEnter={() => setHoveredProduct(product.id)}
               onMouseLeave={() => setHoveredProduct(null)}
             >
-              {/* Hover effect bar */}
+              {/* Gradient color overlay */}
+              <div
+                className="absolute inset-0 pointer-events-none transition-opacity duration-700"
+                style={{
+                  background: product.cssGradient,
+                  opacity: hoveredProduct === product.id ? 0.1 : 0,
+                }}
+              />
               <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
 
               <div className="p-10 h-full flex flex-col">

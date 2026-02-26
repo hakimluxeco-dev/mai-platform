@@ -143,12 +143,25 @@ export default function Hero() {
             exposure="0.8"
             environment-image="neutral"
             loading="eager"
-            style={{
-              width: '100%',
-              height: '100%',
-              background: 'transparent',
-            }}
-          />
+            style={{ width: '100%', height: '100%', background: 'transparent' }}
+          >
+            <div slot="poster" style={{
+              width: '100%', height: '100%',
+              display: 'flex', flexDirection: 'column',
+              alignItems: 'center', justifyContent: 'center',
+              background: 'transparent', gap: '16px'
+            }}>
+              <div style={{
+                width: '48px', height: '48px', borderRadius: '50%',
+                border: '2px solid rgba(255,255,255,0.1)',
+                borderTop: '2px solid rgba(255,255,255,0.6)',
+                animation: 'spin 1s linear infinite'
+              }} />
+              <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '10px', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
+                Loading Model...
+              </p>
+            </div>
+          </model-viewer>
           <p className="text-white/30 text-[10px] text-center tracking-[0.25em] uppercase absolute bottom-2 left-0 right-0 pointer-events-none">
             Drag to rotate · Scroll to zoom
           </p>

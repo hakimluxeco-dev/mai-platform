@@ -85,7 +85,7 @@ export default function Animation3D() {
                         >
                             {/* @ts-ignore */}
                             <model-viewer
-                                src="/models/hero_model.glb"
+                                src="/models/scene.glb"
                                 alt="MAI 3D Robot Model"
                                 autoplay
                                 camera-controls
@@ -95,7 +95,24 @@ export default function Animation3D() {
                                 loading="eager"
                                 reveal="auto"
                                 style={{ width: "100%", height: "100%", background: "transparent" }}
-                            />
+                            >
+                                <div slot="poster" style={{
+                                    width: '100%', height: '100%',
+                                    display: 'flex', flexDirection: 'column',
+                                    alignItems: 'center', justifyContent: 'center',
+                                    background: 'transparent', gap: '16px'
+                                }}>
+                                    <div style={{
+                                        width: '48px', height: '48px', borderRadius: '50%',
+                                        border: '2px solid rgba(255,255,255,0.1)',
+                                        borderTop: '2px solid rgba(255,255,255,0.6)',
+                                        animation: 'spin 1s linear infinite'
+                                    }} />
+                                    <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '10px', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
+                                        Loading Model...
+                                    </p>
+                                </div>
+                            </model-viewer>
                             <p className="text-white/30 text-xs text-center tracking-widest uppercase mt-2">
                                 Drag to rotate · Scroll to zoom
                             </p>

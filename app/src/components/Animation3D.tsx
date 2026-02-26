@@ -156,7 +156,6 @@ export default function Animation3D() {
                             muted
                             loop
                             playsInline
-                            controls
                         >
                             <source src="/3d_showreel.mp4" type="video/mp4" />
                             Your browser does not support the video tag.

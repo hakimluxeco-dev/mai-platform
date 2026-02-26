@@ -1,266 +1,197 @@
-import { Package, TrendingUp, Warehouse, AlertTriangle, BarChart3, CheckCircle, Zap, RefreshCw, Globe, ShoppingCart, Clock, LineChart, Lightbulb } from "lucide-react";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Package, TrendingUp, Warehouse, AlertTriangle, RefreshCw, BarChart3, LineChart, Globe, ArrowRight } from "lucide-react";
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import { Button } from "./ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { Badge } from "./ui/badge";
-import TrialModal from "./TrialModal";
-import DemoModal from "./DemoModal";
+import { useNavigate } from "react-router-dom";
 
 export default function StockManager() {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleContactNavigate = () => {
+    navigate("/");
+    setTimeout(() => {
+      const element = document.getElementById("contact");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   const features = [
     {
-      icon: <Lightbulb className="w-6 h-6" />,
-      title: "Predictive Inventory Analytics",
-      description: "Smart forecasting predicts demand patterns using historical data, seasonality, trends, and market signals to optimize stock levels"
+      icon: TrendingUp,
+      title: "Predictive Analytics",
+      description: "Forecast demand patterns using historical data, volatility trends, and external market signals."
     },
     {
-      icon: <RefreshCw className="w-6 h-6" />,
-      title: "Automated Reordering",
-      description: "Smart auto-replenishment triggers purchase orders at optimal times based on lead times, demand forecasts, and safety stock"
+      icon: RefreshCw,
+      title: "Automated Replenishment",
+      description: "Smart triggers execute purchase orders based on lead times and precise safety stock metrics."
     },
     {
-      icon: <Warehouse className="w-6 h-6" />,
-      title: "Multi-Warehouse Management",
-      description: "Centralized control across unlimited locations with real-time visibility, transfers, and intelligent stock allocation"
+      icon: Warehouse,
+      title: "Multi-Node Management",
+      description: "Centralized control across infinite warehousing locations with real-time stock allocation."
     },
     {
-      icon: <TrendingUp className="w-6 h-6" />,
-      title: "Demand Forecasting",
-      description: "Smart algorithms predict future demand with 95% accuracy using sales history, market trends, and external factors"
+      icon: AlertTriangle,
+      title: "Anomaly Detection",
+      description: "Proactive system alerts for low stock vectors, overstock liabilities, and expiring inventory."
     },
     {
-      icon: <AlertTriangle className="w-6 h-6" />,
-      title: "Smart Alerts & Notifications",
-      description: "Proactive alerts for low stock, overstock, expiring items, and anomalies with customizable thresholds"
+      icon: LineChart,
+      title: "ABC Analysis Engine",
+      description: "Categorize inventory by fiscal value and velocity to focus capital on high-impact SKUs."
     },
     {
-      icon: <BarChart3 className="w-6 h-6" />,
-      title: "Real-Time Analytics",
-      description: "Live dashboards showing inventory turnover, carrying costs, stock-out rates, and profitability by SKU"
-    },
-    {
-      icon: <Globe className="w-6 h-6" />,
-      title: "Supplier Management",
-      description: "Track supplier performance, lead times, pricing, and automatically select optimal vendors for each order"
-    },
-    {
-      icon: <ShoppingCart className="w-6 h-6" />,
-      title: "Order Optimization",
-      description: "Calculate economic order quantities and reorder points to minimize costs while maintaining service levels"
-    },
-    {
-      icon: <LineChart className="w-6 h-6" />,
-      title: "ABC Analysis",
-      description: "Automatically categorize inventory by value and velocity to focus resources on high-impact items"
-    },
-    {
-      icon: <Clock className="w-6 h-6" />,
-      title: "Expiry Management",
-      description: "Track batch numbers, expiration dates, and FIFO/LIFO with automated alerts for perishable goods"
-    },
-    {
-      icon: <Zap className="w-6 h-6" />,
-      title: "Barcode & RFID Integration",
-      description: "Seamless scanning and tracking with support for barcodes, QR codes, and RFID technology"
-    },
-    {
-      icon: <Package className="w-6 h-6" />,
-      title: "Cycle Counting",
-      description: "Automated cycle count scheduling and variance analysis to maintain inventory accuracy without full shutdowns"
+      icon: Package,
+      title: "Cycle Control",
+      description: "Automated variance analysis to maintain inventory accuracy without operational shutdowns."
     }
   ];
 
-  const benefits = [
-    "Reduce inventory costs by 30-40%",
-    "Eliminate stockouts and lost sales",
-    "Improve inventory accuracy to 99%+",
-    "Decrease carrying costs by 25%",
-    "Optimize warehouse space utilization",
-    "Reduce manual counting time by 80%",
-    "Improve supplier relationships",
-    "Increase inventory turnover by 35%"
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
+    <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black">
       <Helmet>
-        <title>Stock Manager - Smart Automation Inventory Optimization | MAI Business Solutions</title>
-        <meta name="description" content="Intelligent inventory optimization with predictive analytics and automated replenishment. Reduce inventory costs by 30-40%, improve accuracy to 99%+, and eliminate stockouts. Smart forecasting predicts demand with 95% accuracy." />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.maisolutions.co.za/stock-manager" />
-        <meta property="og:site_name" content="MAI Business Solutions" />
-        <meta property="og:title" content="Stock Manager - Smart Automation Inventory Optimization" />
-        <meta property="og:description" content="Intelligent inventory optimization with predictive analytics and automated replenishment. Reduce inventory costs by 30-40%, improve accuracy to 99%+, and eliminate stockouts. Smart forecasting predicts demand with 95% accuracy." />
-        <meta property="og:image" content="https://www.maisolutions.co.za/logo.svg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="MAI Business Solutions Logo" />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://www.maisolutions.co.za/stock-manager" />
-        <meta property="twitter:title" content="Stock Manager - Smart Automation Inventory Optimization" />
-        <meta property="twitter:description" content="Reduce inventory costs by 30-40%, improve accuracy to 99%+, and eliminate stockouts. Smart forecasting predicts demand with 95% accuracy using intelligent analytics." />
-        <meta property="twitter:image" content="https://www.maisolutions.co.za/logo.svg" />
+        <title>Stock Manager // AI Systems | MAI</title>
       </Helmet>
 
       <Navbar />
 
-      <DemoModal 
-        isOpen={isDemoModalOpen} 
-        onClose={() => setIsDemoModalOpen(false)}
-        productName="Stock Manager"
-      />
-
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-black border-b border-white/10">
+        <div className="absolute inset-x-0 h-px top-0 bg-white/10"></div>
+        <div className="absolute inset-y-0 w-px left-8 md:left-12 lg:left-24 bg-white/10 hidden md:block"></div>
+        <div className="absolute inset-y-0 w-px right-8 md:right-12 lg:right-24 bg-white/10 hidden md:block"></div>
+
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.03]"></div>
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-600 to-cyan-500 p-4 mx-auto mb-6 shadow-2xl shadow-indigo-500/30">
-              <Package className="w-full h-full text-white" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl pt-16"
+          >
+            <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-white pl-4 py-1 mb-8">
+              System 04 // Logistics Architecture
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-indigo-400 to-cyan-300 bg-clip-text text-transparent">
-                Stock Manager
-              </span>
+            <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.05] text-white mb-8 uppercase">
+              STOCK<br />
+              <span className="text-white/60">MANAGER.</span>
             </h1>
-            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-              AI-powered inventory optimization with predictive analytics and automated replenishment
+            <p className="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed font-light tracking-wide mb-12">
+              Enterprise-grade inventory optimization. Deploy predictive analytics and automated replenishment to eliminate stockouts and minimize carrying costs.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button 
-                onClick={() => setIsDemoModalOpen(true)}
-                className="bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 text-white shadow-lg shadow-indigo-500/30"
-              >
-                Schedule Demo
-              </Button>
-            </div>
-          </div>
+            <Button
+              onClick={handleContactNavigate}
+              className="rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-10 font-bold transition-all group border border-white"
+            >
+              DEPLOY SYSTEM <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </Button>
+          </motion.div>
         </div>
       </section>
 
-      {/* Key Value Proposition */}
-      <section className="py-16 bg-gradient-to-r from-indigo-600/10 to-cyan-500/10 border-y border-indigo-500/20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              Never Run Out, Never Overstock
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-300 bg-clip-text text-transparent mb-2">
-                  95%
+      {/* Metrics Section */}
+      <section className="py-24 bg-zinc-950 relative border-b border-white/10">
+        <div className="absolute inset-y-0 w-px left-8 md:left-12 lg:left-24 bg-white/10 hidden md:block"></div>
+        <div className="absolute inset-y-0 w-px right-8 md:right-12 lg:right-24 bg-white/10 hidden md:block"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1 grid grid-cols-2 gap-px bg-white/10 border border-white/10 p-px">
+              {[
+                { val: "95%", label: "Forecast Accuracy" },
+                { val: "99%", label: "System Uptime" },
+                { val: "-30%", label: "Cost Reduction" },
+                { val: "+35%", label: "Turnover Speed" }
+              ].map((stat, idx) => (
+                <div key={idx} className="bg-black p-8 text-center flex flex-col justify-center items-center hover:bg-zinc-900 transition-colors">
+                  <div className="text-4xl font-bold tracking-tighter text-white mb-2">{stat.val}</div>
+                  <div className="text-xs tracking-[0.2em] font-semibold text-white/50 uppercase">{stat.label}</div>
                 </div>
-                <p className="text-gray-300">Forecast Accuracy</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-300 bg-clip-text text-transparent mb-2">
-                  30%
-                </div>
-                <p className="text-gray-300">Cost Reduction</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-300 bg-clip-text text-transparent mb-2">
-                  99%
-                </div>
-                <p className="text-gray-300">Inventory Accuracy</p>
-              </div>
+              ))}
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <h2 className="text-3xl font-bold tracking-tighter uppercase mb-6">Absolute Visibility</h2>
+              <p className="text-white/60 font-light leading-relaxed mb-8 text-lg">
+                Never overstock. Never run out. Our algorithmic models maintain perfect equilibrium across your entire supply chain, ensuring capital is never tied up in stagnant inventory.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Grid */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge className="mb-4 bg-indigo-500/10 text-indigo-300 border-indigo-500/20">
-              Intelligent Features
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Complete Inventory Control at Your Fingertips
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Advanced AI-driven inventory management for businesses of all sizes
-            </p>
+      <section className="py-24 bg-black relative">
+        <div className="absolute inset-y-0 w-px left-8 md:left-12 lg:left-24 bg-white/10 hidden md:block z-0"></div>
+        <div className="absolute inset-y-0 w-px right-8 md:right-12 lg:right-24 bg-white/10 hidden md:block z-0"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mb-16">
+            <h2 className="text-2xl font-bold tracking-tighter uppercase mb-4">SYSTEM CAPABILITIES</h2>
+            <div className="w-12 h-px bg-white mb-8"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {features.map((feature, index) => (
-              <Card key={index} className="bg-gray-900/50 border-gray-800 hover:border-indigo-500/50 transition-all duration-300 backdrop-blur-sm">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-600 to-cyan-500 p-2.5 mb-4 text-white">
-                    {feature.icon}
-                  </div>
-                  <CardTitle className="text-xl text-white">{feature.title}</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    {feature.description}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+          <div className="grid md:grid-cols-3 gap-0 border border-white/10">
+            {features.map((feature, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: idx * 0.1 }}
+                className={`bg-black p-10 lg:p-12 border-white/10 hover:bg-white/[0.02] transition-colors group relative overflow-hidden ${idx % 3 !== 2 ? "md:border-r" : ""
+                  } ${idx < 3 ? "border-b" : ""}`}
+              >
+                <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
+
+                <div className="w-12 h-12 flex items-center justify-center border border-white/20 mb-8 group-hover:bg-white transition-colors duration-500">
+                  <feature.icon className="w-6 h-6 text-white group-hover:text-black transition-colors duration-500" />
+                </div>
+                <h3 className="text-xl tracking-tight font-bold text-white mb-4 uppercase">{feature.title}</h3>
+                <p className="text-white/60 leading-relaxed font-light">{feature.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 bg-gray-900/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
-              Optimize Your Inventory Operations
-            </h2>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-gray-800/50 border border-gray-700">
-                  <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">{benefit}</span>
-                </div>
-              ))}
-            </div>
+      {/* CTA Section */}
+      <section className="py-32 relative overflow-hidden bg-zinc-950 border-t border-white/10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0,transparent_100%)]"></div>
+        <div className="container mx-auto px-4 sm:px-8 relative z-10 text-center">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tighter uppercase mb-6 text-white">
+            INITIALIZE STOCK PROTOCOL
+          </h2>
+          <p className="text-white/60 mb-10 max-w-2xl mx-auto text-lg font-light tracking-wide">
+            Automate logistics operations and secure your supply chain with mathematical precision.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <Button
+              onClick={handleContactNavigate}
+              size="lg"
+              className="w-full sm:w-auto rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-12 font-bold transition-all group border border-white"
+            >
+              START INTEGRATION
+              <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="max-w-4xl mx-auto bg-gradient-to-br from-indigo-600 to-cyan-500 border-0 text-white">
-            <CardContent className="p-12 text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Ready to Optimize Your Inventory?
-              </h2>
-              <p className="text-xl text-indigo-100 mb-8">
-                Join leading businesses using AI to eliminate waste and maximize profitability
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Button 
-                  size="lg" 
-                  onClick={() => setIsDemoModalOpen(true)}
-                  className="bg-white text-indigo-600 hover:bg-gray-100"
-                >
-                  Contact Sales
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <Footer />
     </div>
   );
 }

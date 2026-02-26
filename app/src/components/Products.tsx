@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FileText, Users, Package, Phone, MessageCircle, ArrowRight, Zap, Shield, TrendingUp } from "lucide-react";
+import { Code, Video, Megaphone, Cpu, ArrowRight, Zap, Shield, TrendingUp, Box } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import { motion } from "framer-motion";
 
 interface Product {
   id: string;
@@ -13,53 +14,59 @@ interface Product {
   features: string[];
   color: string;
   gradient: string;
+  link: string;
 }
 
 const products: Product[] = [
   {
-    id: "whatsapp-assistant",
-    title: "WhatsApp Assistant",
-    description: "24/7 automated sales assistant that engages leads instantly, qualifies prospects, and manages your WhatsApp conversations.",
-    icon: <MessageCircle className="w-8 h-8" />,
-    features: ["24/7 Sales Automation", "Personalized Broadcasts", "Smart Segmentation", "Rich Media Messaging", "Voice Enabled"],
+    id: "marketing",
+    title: "Digital Marketing",
+    description: "Data-driven marketing strategies to elevate your brand, acquire high-value leads, and maximize your ROI.",
+    icon: <Megaphone className="w-8 h-8" />,
+    features: ["Social Media Management", "SEO & Content Strategy", "Performance Marketing", "Brand Identity"],
     color: "blue",
     gradient: "from-blue-600 to-cyan-500",
+    link: "/marketing",
   },
   {
-    id: "invoice-manager",
-    title: "Invoice Manager",
-    description: "Automate your invoicing process with smart document processing and intelligent payment tracking.",
-    icon: <FileText className="w-8 h-8" />,
-    features: ["Automated Invoice Generation", "Smart Payment Tracking", "Multi-Currency Support", "Real-time Analytics"],
-    color: "blue",
-    gradient: "from-blue-600 to-cyan-500",
+    id: "3d-animation",
+    title: "3D Animation & Models",
+    description: "High-fidelity 3D assets, character animation, and real-time interactive models for commercial and digital use.",
+    icon: <Box className="w-8 h-8" />,
+    features: ["3D Modelling", "Character Animation", "Cinematic Renders", "Real-Time WebGL"],
+    color: "orange",
+    gradient: "from-orange-500 to-yellow-400",
+    link: "/3d-animation",
   },
   {
-    id: "lead-machine",
-    title: "Lead Machine",
-    description: "Transform your sales pipeline with intelligent lead generation, scoring, and nurturing capabilities.",
-    icon: <Users className="w-8 h-8" />,
-    features: ["Smart Lead Scoring", "Automated Outreach", "CRM Integration", "Conversion Analytics"],
-    color: "cyan",
-    gradient: "from-cyan-600 to-blue-500",
+    id: "video-commercials",
+    title: "Video Commercials",
+    description: "Cinematic, high-impact corporate videos and commercials designed to captivate your audience and tell your story.",
+    icon: <Video className="w-8 h-8" />,
+    features: ["Corporate Storytelling", "Social Media Ads", "Product Showcases", "Event Coverage"],
+    color: "purple",
+    gradient: "from-purple-600 to-pink-500",
+    link: "/video-commercials",
   },
   {
-    id: "stock-manager",
-    title: "Stock Manager",
-    description: "Optimize inventory with predictive analytics, automated reordering, and real-time stock monitoring.",
-    icon: <Package className="w-8 h-8" />,
-    features: ["Predictive Inventory", "Auto-Reordering", "Multi-Warehouse Support", "Demand Forecasting"],
+    id: "software-development",
+    title: "Software Development",
+    description: "Custom-built web applications, mobile apps, and CRMs engineered for performance, security, and scale.",
+    icon: <Code className="w-8 h-8" />,
+    features: ["Custom Web Apps", "Mobile Development", "Enterprise CRMs", "API Integrations"],
     color: "indigo",
-    gradient: "from-indigo-600 to-cyan-500",
+    gradient: "from-indigo-600 to-blue-500",
+    link: "/software-development",
   },
   {
-    id: "receptionist",
-    title: "Virtual Receptionist",
-    description: "24/7 automated phone system that answers calls, takes messages, and books appointments automatically.",
-    icon: <Phone className="w-8 h-8" />,
-    features: ["24/7 Call Answering", "Appointment Booking", "Message Taking", "Multi-Language Support"],
-    color: "blue",
-    gradient: "from-blue-600 to-cyan-500",
+    id: "ai-systems",
+    title: "AI Systems",
+    description: "Intelligent automation and AI-powered assistants to streamline operations and enhance customer engagement.",
+    icon: <Cpu className="w-8 h-8" />,
+    features: ["WhatsApp Assistants", "Automated Invoicing", "Lead Generation Bots", "Virtual Receptionists"],
+    color: "cyan",
+    gradient: "from-cyan-500 to-emerald-400",
+    link: "/ai-systems",
   },
 ];
 
@@ -67,99 +74,121 @@ export default function Products() {
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const handleLearnMore = (productId: string) => {
-    navigate(`/${productId}`);
+  const handleLearnMore = (link: string) => {
+    navigate(link);
   };
 
   return (
-    <section id="products" className="relative py-12 sm:py-20 md:py-32 bg-gray-950 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
+    <section id="solutions" className="relative py-24 md:py-32 bg-black overflow-hidden text-white">
+      {/* Structural Architectural Grid Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.03]"></div>
       </div>
+
+      {/* Top Border */}
+      <div className="absolute top-0 inset-x-0 h-px bg-white/10"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <Badge className="mb-3 sm:mb-4 bg-blue-500/10 text-blue-300 border-blue-500/20 text-xs sm:text-sm">
-            Our Solutions
-          </Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-4">
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              Business Solutions That Work
-            </span>
-          </h2>
-          <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto px-4">
-            Powerful automation tools designed to streamline your operations and drive growth
-          </p>
+        <div className="text-left mb-16 sm:mb-24 flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-8 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl"
+          >
+            <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-white pl-4 py-1 mb-6">
+              Core Capabilities
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-white">
+              TRANSFORMATIVE<br />
+              <span className="text-white/60">INFRASTRUCTURE.</span>
+            </h2>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-white/60 max-w-sm text-sm leading-relaxed"
+          >
+            We provide the strategic framework, tools, and systems your enterprise needs to scale operations and lead your market.
+          </motion.p>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
-          {products.map((product) => (
-            <Card
+        {/* Products Grid - Architectural Layout */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-0 border border-white/10">
+          {products.map((product, index) => (
+            <motion.div
               key={product.id}
-              className={`bg-gray-900/50 border-gray-800 hover:border-blue-500/50 transition-all duration-300 cursor-pointer group backdrop-blur-sm ${
-                hoveredProduct === product.id ? "sm:scale-105 shadow-2xl shadow-blue-500/20" : ""
-              }`}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="group relative border-b sm:border-b-0 sm:border-r border-white/10 last:border-r-0 last:border-b-0 sm:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(even)]:border-r lg:[&:nth-child(4n)]:border-r-0 sm:[&:nth-child(1)]:border-b sm:[&:nth-child(2)]:border-b lg:[&:nth-child(1)]:border-b-0 lg:[&:nth-child(2)]:border-b-0 bg-transparent hover:bg-white/[0.02] transition-colors duration-500 overflow-hidden"
               onMouseEnter={() => setHoveredProduct(product.id)}
               onMouseLeave={() => setHoveredProduct(null)}
             >
-              <CardHeader>
-                <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br ${product.gradient} p-2.5 sm:p-3 mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                  <div className="text-white">{product.icon}</div>
+              {/* Hover effect bar */}
+              <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
+
+              <div className="p-10 h-full flex flex-col">
+                <div className={`w-12 h-12 flex items-center justify-center border border-white/20 mb-8 group-hover:bg-white group-hover:text-black transition-colors duration-500`}>
+                  <div className="text-white group-hover:text-black transition-colors duration-500 scale-75">{product.icon}</div>
                 </div>
-                <CardTitle className="text-xl sm:text-2xl text-white mb-2">{product.title}</CardTitle>
-                <CardDescription className="text-gray-400 text-sm sm:text-base leading-relaxed">
+
+                <h3 className="text-2xl font-bold tracking-tight mb-4 uppercase">{product.title}</h3>
+                <p className="text-white/60 text-sm leading-relaxed mb-10 flex-grow">
                   {product.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2.5 sm:space-y-3 mb-5 sm:mb-6">
-                  {product.features.map((feature, index) => (
-                    <div key={index} className="flex items-start gap-2.5 sm:gap-3">
-                      <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${product.gradient} flex items-center justify-center flex-shrink-0 mt-0.5`}>
-                        <Zap className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
-                      </div>
-                      <span className="text-xs sm:text-sm text-gray-300">{feature}</span>
+                </p>
+
+                <div className="space-y-3 mb-10 opacity-60 group-hover:opacity-100 transition-opacity duration-500">
+                  {product.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center gap-3">
+                      <div className={`w-1 h-1 bg-white`}></div>
+                      <span className="text-xs tracking-wide uppercase text-white/80">{feature}</span>
                     </div>
                   ))}
                 </div>
+
                 <Button
-                  onClick={() => handleLearnMore(product.id)}
-                  className={`w-full bg-gradient-to-r ${product.gradient} hover:opacity-90 text-white group/btn text-sm sm:text-base`}
+                  onClick={() => handleLearnMore(product.link)}
+                  className={`w-full py-6 rounded-none bg-transparent hover:bg-white text-white hover:text-black border border-white/20 hover:border-white group/btn text-xs tracking-[0.15em] font-bold transition-all duration-300 mt-auto`}
                 >
-                  Learn More
-                  <ArrowRight className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  EXPLORE
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-all" />
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* Benefits Section */}
-        <div className="mt-16 sm:mt-24 grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
-          <div className="text-center px-4">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <Shield className="w-7 h-7 sm:w-8 sm:h-8 text-blue-400" />
+        {/* Technical Benefits Section - Brutalist */}
+        <div className="mt-24 grid sm:grid-cols-3 gap-0 border-y border-white/10 relative">
+          <div className="absolute inset-y-0 left-1/3 w-px bg-white/10 hidden sm:block"></div>
+          <div className="absolute inset-y-0 right-1/3 w-px bg-white/10 hidden sm:block"></div>
+
+          <div className="p-8 sm:p-12 relative flex items-start gap-6 border-b sm:border-b-0 border-white/10 last:border-0 hover:bg-white/[0.02] transition-colors">
+            <Shield className="w-6 h-6 text-white/40 shrink-0 mt-1" />
+            <div>
+              <h3 className="text-sm tracking-[0.2em] font-bold text-white mb-2 uppercase">Enterprise Security</h3>
+              <p className="text-xs text-white/50 leading-relaxed font-mono">ENCRYPTED AT REST & IN TRANSIT. ZERO-TRUST ARCHITECTURE COMPLIANT.</p>
             </div>
-            <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Enterprise Security</h3>
-            <p className="text-sm sm:text-base text-gray-400">Bank-level encryption and compliance standards</p>
           </div>
-          <div className="text-center px-4">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-cyan-500/10 flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <TrendingUp className="w-7 h-7 sm:w-8 sm:h-8 text-cyan-400" />
+          <div className="p-8 sm:p-12 relative flex items-start gap-6 border-b sm:border-b-0 border-white/10 last:border-0 hover:bg-white/[0.02] transition-colors">
+            <TrendingUp className="w-6 h-6 text-white/40 shrink-0 mt-1" />
+            <div>
+              <h3 className="text-sm tracking-[0.2em] font-bold text-white mb-2 uppercase">Performance Yield</h3>
+              <p className="text-xs text-white/50 leading-relaxed font-mono">AVERAGED 40% EFFICIENCY IMPROVEMENT ACROSS ACTIVE DEPLOYMENTS.</p>
             </div>
-            <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Proven Results</h3>
-            <p className="text-sm sm:text-base text-gray-400">Average 40% efficiency improvement</p>
           </div>
-          <div className="text-center px-4 sm:col-span-2 md:col-span-1">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-indigo-500/10 flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <Zap className="w-7 h-7 sm:w-8 sm:h-8 text-indigo-400" />
+          <div className="p-8 sm:p-12 relative flex items-start gap-6 hover:bg-white/[0.02] transition-colors">
+            <Zap className="w-6 h-6 text-white/40 shrink-0 mt-1" />
+            <div>
+              <h3 className="text-sm tracking-[0.2em] font-bold text-white mb-2 uppercase">Rapid Deployment</h3>
+              <p className="text-xs text-white/50 leading-relaxed font-mono">STREAMLINED INTEGRATION PIPELINE. OPERATIONAL IN &lt;48 HOURS.</p>
             </div>
-            <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Rapid Deployment</h3>
-            <p className="text-sm sm:text-base text-gray-400">Get started in less than 48 hours</p>
           </div>
         </div>
       </div>

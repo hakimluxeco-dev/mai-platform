@@ -1,0 +1,14 @@
+<svg viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="scale-100">
+  <defs>
+    <linearGradient id="logo-gradient" x1="0" y1="0" x2="100" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563eb"></stop>
+      <stop offset="1" stop-color="#06b6d4"></stop>
+    </linearGradient>
+  </defs>
+  <path d="M10 50V10L30 35L50 10V50" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M65 50L85 10L105 50" stroke="url(#logo-gradient)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M72 35H98" stroke="url(#logo-gradient)" stroke-width="4" stroke-linecap="round"></path>
+  <path d="M120 10V50" stroke="white" stroke-width="6" stroke-linecap="round"></path>
+  <text x="145" y="28" font-family="Inter, sans-serif" font-weight="700" font-size="16" fill="white" letter-spacing="1">BUSINESS</text>
+  <text x="145" y="48" font-family="Inter, sans-serif" font-weight="400" font-size="14" fill="#94a3b8" letter-spacing="3">SOLUTIONS</text>
+</svg>

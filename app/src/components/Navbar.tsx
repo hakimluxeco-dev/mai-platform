@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Logo from "./Logo";
-import { Button } from "./ui/button";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,60 +38,70 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-gray-900/95 backdrop-blur-md shadow-lg shadow-blue-500/10"
-        : "bg-transparent"
+        ? "bg-black border-b border-white/10 py-2"
+        : "bg-transparent py-4"
         }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="flex items-center justify-between h-16">
           <Logo />
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             <button
               onClick={() => handleNavigation("hero")}
-              className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm font-medium"
+              className="text-white/70 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] uppercase font-semibold"
             >
               Home
             </button>
             <button
-              onClick={() => handleNavigation("products")}
-              className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm font-medium"
+              onClick={() => handleNavigation("solutions")}
+              className="text-white/70 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] uppercase font-semibold"
             >
-              Products
+              Solutions
             </button>
             <Link
-              to="/custom-systems"
-              className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm font-medium"
+              to="/marketing"
+              className="text-white/70 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] uppercase font-semibold"
             >
-              Custom Systems
+              Marketing
+            </Link>
+            <Link
+              to="/3d-animation"
+              className="text-white/70 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] uppercase font-semibold"
+            >
+              3D Animations
+            </Link>
+            <Link
+              to="/video-commercials"
+              className="text-white/70 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] uppercase font-semibold"
+            >
+              Video Production
+            </Link>
+            <Link
+              to="/software-development"
+              className="text-white/70 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] uppercase font-semibold"
+            >
+              Software
+            </Link>
+            <Link
+              to="/ai-systems"
+              className="text-white/70 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] uppercase font-semibold"
+            >
+              Systems
             </Link>
             <Link
               to="/about"
-              className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm font-medium"
+              className="text-white/70 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] uppercase font-semibold"
             >
               About Us
             </Link>
-            <Button
-              onClick={() => handleNavigation("contact")}
-              className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white shadow-lg shadow-blue-500/30"
-            >
-              Get Started
-            </Button>
-            <div className="h-6 w-px bg-gray-800 mx-2"></div>
-            <a
-              href="/marketing"
-              className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium flex items-center gap-1 group"
-            >
-              Marketing Agency
-              <span className="group-hover:translate-x-0.5 transition-transform">→</span>
-            </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-gray-300 hover:text-blue-400 transition-colors"
+            className="md:hidden text-white hover:text-white/70 transition-colors"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -100,46 +109,62 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-800">
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-black border-b border-white/10 m-0">
+            <div className="flex flex-col px-6 py-8">
               <button
                 onClick={() => handleNavigation("hero")}
-                className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-left py-2"
+                className="text-white/70 hover:text-white transition-colors duration-200 text-left py-4 text-xs tracking-[0.2em] uppercase border-b border-white/5 font-semibold"
               >
                 Home
               </button>
               <button
-                onClick={() => handleNavigation("products")}
-                className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-left py-2"
+                onClick={() => handleNavigation("solutions")}
+                className="text-white/70 hover:text-white transition-colors duration-200 text-left py-4 text-xs tracking-[0.2em] uppercase border-b border-white/5 font-semibold"
               >
-                Products
+                Solutions
               </button>
               <Link
-                to="/custom-systems"
-                className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-left py-2"
+                to="/marketing"
+                className="text-white/70 hover:text-white transition-colors duration-200 text-left py-4 text-xs tracking-[0.2em] uppercase border-b border-white/5 font-semibold"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Custom Systems
+                Marketing
+              </Link>
+              <Link
+                to="/3d-animation"
+                className="text-white/70 hover:text-white transition-colors duration-200 text-left py-4 text-xs tracking-[0.2em] uppercase border-b border-white/5 font-semibold"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                3D Animations
+              </Link>
+              <Link
+                to="/video-commercials"
+                className="text-white/70 hover:text-white transition-colors duration-200 text-left py-4 text-xs tracking-[0.2em] uppercase border-b border-white/5 font-semibold"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Video Production
+              </Link>
+              <Link
+                to="/software-development"
+                className="text-white/70 hover:text-white transition-colors duration-200 text-left py-4 text-xs tracking-[0.2em] uppercase border-b border-white/5 font-semibold"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Software
+              </Link>
+              <Link
+                to="/ai-systems"
+                className="text-white/70 hover:text-white transition-colors duration-200 text-left py-4 text-xs tracking-[0.2em] uppercase border-b border-white/5 font-semibold"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Systems
               </Link>
               <Link
                 to="/about"
-                className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-left py-2"
+                className="text-white/70 hover:text-white transition-colors duration-200 text-left py-4 text-xs tracking-[0.2em] uppercase border-b border-white/5 font-semibold"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About Us
               </Link>
-              <Button
-                onClick={() => handleNavigation("contact")}
-                className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white w-full"
-              >
-                Get Started
-              </Button>
-              <a
-                href="/marketing"
-                className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-left py-2 font-medium flex items-center gap-2"
-              >
-                Visit Marketing Agency →
-              </a>
             </div>
           </div>
         )}

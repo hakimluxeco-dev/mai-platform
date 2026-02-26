@@ -1,23 +1,33 @@
-import { ArrowRight, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
-import Logo from "./Logo";
 import DemoModal from "./DemoModal";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Hero() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
-  const scrollToProducts = () => {
-    const element = document.getElementById("products");
+  const scrollToSolutions = () => {
+    const element = document.getElementById("solutions");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
+  const images = [1, 2, 3, 4];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 2800); // 2.8 seconds per slide (faster)
+    return () => clearInterval(timer);
+  }, [images.length]);
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950 pt-16"
+      className="relative min-h-screen pt-32 pb-24 flex items-center justify-center overflow-hidden bg-black text-white"
     >
       <DemoModal
         isOpen={isDemoModalOpen}
@@ -25,89 +35,122 @@ export default function Hero() {
         productName="MAI Business Solutions"
       />
 
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-full blur-3xl"></div>
+      {/* Background Cinematic Slider */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-black pointer-events-none select-none">
+        <AnimatePresence>
+          <motion.div
+            key={currentImageIndex}
+            initial={{ opacity: 0, scale: 1 }}
+            animate={{ opacity: 1, scale: 1.05 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              opacity: { duration: 1.2, ease: "easeInOut" },
+              scale: { duration: 3.5, ease: "linear" }
+            }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <img
+              src={`/hero/${images[currentImageIndex]}.png`}
+              alt="Premium Corporate Background"
+              className="object-cover w-full h-full opacity-100 mix-blend-screen"
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Cinematic Vignette Overlays to blend edges but allow center brightness  */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-20"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-20"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0,black_90%)] z-20"></div>
       </div>
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+      {/* Removed structural grid lines and decorative nodes */}
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Logo with Animation */}
-          <div className="flex justify-center mb-6 sm:mb-8 animate-float">
-            <Logo className="scale-100" />
-          </div>
+      {/* Main Content */}
+      <div className="container mx-auto px-4 sm:px-8 relative z-30 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-[100rem]">
 
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6 sm:mb-8">
-            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" />
-            <span className="text-xs sm:text-sm text-blue-300 font-medium">Smart Business Solutions</span>
-          </div>
+        {/* Left Column - Text Content */}
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          {/* Meta Label */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.1 }}
+            className="mb-8 overflow-hidden"
+          >
+            <div className="text-white/80 drop-shadow-lg text-xs sm:text-sm tracking-[0.4em] uppercase font-bold border-l-2 border-white pl-4 py-1">
+              Strategic Intelligence // Active
+            </div>
+          </motion.div>
 
-          {/* Main Heading */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight px-2">
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
-              Streamline Your Business
-            </span>
-            <br />
-            <span className="text-white">with Smart Solutions</span>
-          </h1>
+          {/* Brutalist Hero Headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="mb-8"
+          >
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[6rem] xl:text-[7rem] font-bold tracking-tighter leading-[1] text-white drop-shadow-2xl">
+              ENGINEERED<br />
+              <span className="text-white/80 drop-shadow-2xl">FOR DOMINANCE.</span>
+            </h1>
+          </motion.div>
 
-          {/* Subheading */}
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-            Automate operations, boost productivity, and drive growth with our intelligent business solutions designed to solve real challenges.
-          </p>
+          {/* Stark Subheading */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="text-lg md:text-xl lg:text-2xl text-white/90 drop-shadow-xl mb-12 max-w-2xl leading-relaxed font-light tracking-wide lg:mx-0 mx-auto"
+          >
+            We design, build, and deploy high-performance infrastructure for modern enterprises. From precision marketing to autonomous AI systems, our solutions are resilient, sophisticated, and engineered to command markets.
+          </motion.p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4">
+          {/* Brutalist Action Area */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto mt-4"
+          >
+            <Button
+              onClick={scrollToSolutions}
+              size="lg"
+              className="rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-12 font-bold transition-all group border border-white"
+            >
+              VIEW CAPABILITIES
+              <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </Button>
             <Button
               onClick={() => setIsDemoModalOpen(true)}
               size="lg"
-              className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white shadow-lg shadow-blue-500/30 text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 group"
-            >
-              Schedule a Demo
-              <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              onClick={scrollToProducts}
-              size="lg"
               variant="outline"
-              className="w-full sm:w-auto border-blue-500/30 text-blue-300 hover:bg-blue-500/10 hover:border-blue-500/50 text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6"
+              className="rounded-none h-16 bg-transparent border-white text-white hover:bg-white/10 hover:backdrop-blur-sm text-sm tracking-[0.15em] px-12 font-bold transition-all"
             >
-              Explore Products
+              INITIATE CONTACT
             </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12 sm:mt-20 max-w-3xl mx-auto px-4">
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-1 sm:mb-2">
-                500+
-              </div>
-              <div className="text-xs sm:text-sm text-gray-500">Businesses Transformed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-1 sm:mb-2">
-                98%
-              </div>
-              <div className="text-xs sm:text-sm text-gray-500">Client Satisfaction</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-1 sm:mb-2">
-                24/7
-              </div>
-              <div className="text-xs sm:text-sm text-gray-500">AI Support</div>
-            </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
 
-      {/* Bottom Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-950 to-transparent"></div>
+        {/* Right Column - Google model-viewer 3D Robot */}
+        <div className="h-[350px] sm:h-[450px] lg:h-[700px] w-full relative z-40">
+          {/* @ts-ignore - model-viewer is a web component loaded via CDN */}
+          <model-viewer
+            src="/models/scene.gltf"
+            alt="MAI Business Solutions AI Robot"
+            autoplay
+            shadow-intensity="1"
+            exposure="0.8"
+            environment-image="neutral"
+            style={{
+              width: '100%',
+              height: '100%',
+              background: 'transparent',
+            }}
+          />
+        </div>
+        {/* Background Technical Metrics Overlay Removed */}
+
+      </div>
     </section>
   );
 }

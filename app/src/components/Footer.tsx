@@ -6,64 +6,64 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-950 border-t border-gray-800">
+    <footer className="bg-black border-t border-white/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Brand */}
           <div className="sm:col-span-2">
             <Logo className="h-11 mb-3 sm:mb-4" />
-            <p className="text-gray-400 text-xs sm:text-sm max-w-md mb-3 sm:mb-4">
-              Empowering businesses with cutting-edge AI solutions. Transform your operations and unlock unprecedented growth.
+            <p className="text-white/60 text-xs sm:text-sm max-w-md mb-3 sm:mb-4 leading-relaxed">
+              Architecting elite digital infrastructure and comprehensive business solutions. Engineering growth through precision and design.
             </p>
-            <div className="flex gap-3 sm:gap-4">
+            <div className="flex gap-3 sm:gap-4 mt-6">
               <a
                 href="#"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition-colors"
+                className="w-10 h-10 border border-white/10 hover:border-white/40 hover:bg-white/[0.02] flex items-center justify-center transition-all group"
               >
-                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-white" />
+                <Linkedin className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition-colors"
+                className="w-10 h-10 border border-white/10 hover:border-white/40 hover:bg-white/[0.02] flex items-center justify-center transition-all group"
               >
-                <Twitter className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-white" />
+                <Twitter className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition-colors"
+                className="w-10 h-10 border border-white/10 hover:border-white/40 hover:bg-white/[0.02] flex items-center justify-center transition-all group"
               >
-                <Github className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-white" />
+                <Github className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
               </a>
             </div>
           </div>
 
-          {/* Products */}
+          {/* Solutions */}
           <div>
-            <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Products</h3>
-            <ul className="space-y-1.5 sm:space-y-2">
+            <h3 className="text-white text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6">Solutions</h3>
+            <ul className="space-y-3 sm:space-y-4">
               <li>
-                <Link to="/whatsapp-assistant" className="text-gray-400 hover:text-blue-400 text-xs sm:text-sm transition-colors">
-                  WhatsApp Assistant
+                <Link to="/marketing" className="text-white/50 hover:text-white text-xs sm:text-sm transition-colors uppercase tracking-wider block">
+                  Precision Marketing
                 </Link>
               </li>
               <li>
-                <Link to="/invoice-manager" className="text-gray-400 hover:text-blue-400 text-xs sm:text-sm transition-colors">
-                  Invoice Manager
+                <Link to="/3d-animation" className="text-white/50 hover:text-white text-xs sm:text-sm transition-colors uppercase tracking-wider block">
+                  3D Animation
                 </Link>
               </li>
               <li>
-                <Link to="/lead-machine" className="text-gray-400 hover:text-blue-400 text-xs sm:text-sm transition-colors">
-                  Lead Machine
+                <Link to="/video-commercials" className="text-white/50 hover:text-white text-xs sm:text-sm transition-colors uppercase tracking-wider block">
+                  Cinematic Production
                 </Link>
               </li>
               <li>
-                <Link to="/stock-manager" className="text-gray-400 hover:text-blue-400 text-xs sm:text-sm transition-colors">
-                  Stock Manager
+                <Link to="/software-development" className="text-white/50 hover:text-white text-xs sm:text-sm transition-colors uppercase tracking-wider block">
+                  Software Architecture
                 </Link>
               </li>
               <li>
-                <Link to="/receptionist" className="text-gray-400 hover:text-blue-400 text-xs sm:text-sm transition-colors">
-                  Virtual Receptionist
+                <Link to="/ai-systems" className="text-white/50 hover:text-white text-xs sm:text-sm transition-colors uppercase tracking-wider block">
+                  Autonomous Intelligence
                 </Link>
               </li>
             </ul>
@@ -71,20 +71,20 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Company</h3>
-            <ul className="space-y-1.5 sm:space-y-2">
+            <h3 className="text-white text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6">Company</h3>
+            <ul className="space-y-3 sm:space-y-4">
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-blue-400 text-xs sm:text-sm transition-colors">
+                <Link to="/about" className="text-white/50 hover:text-white text-xs sm:text-sm transition-colors uppercase tracking-wider block">
                   About Us
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-blue-400 text-xs sm:text-sm transition-colors">
+                <a href="#" className="text-white/50 hover:text-white text-xs sm:text-sm transition-colors uppercase tracking-wider block">
                   Careers
                 </a>
               </li>
               <li>
-                <Link to="/privacy-policy" className="text-gray-400 hover:text-blue-400 text-xs sm:text-sm transition-colors">
+                <Link to="/privacy-policy" className="text-white/50 hover:text-white text-xs sm:text-sm transition-colors uppercase tracking-wider block">
                   Privacy Policy
                 </Link>
               </li>
@@ -93,15 +93,15 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 sm:pt-8 border-t border-gray-800 flex flex-col items-center gap-3 sm:gap-4">
-          <p className="text-gray-500 text-xs sm:text-sm text-center">
-            © {currentYear} <Link to="/" className="hover:text-blue-400 transition-colors">Mai Business Solutions</Link> & <a href="/marketing" className="hover:text-blue-400 transition-colors">Mai Marketing Solutions</a>, All rights reserved.
+        <div className="pt-6 sm:pt-8 border-t border-white/10 flex flex-col items-center gap-3 sm:gap-4 mt-8">
+          <p className="text-white/40 text-xs sm:text-sm text-center uppercase tracking-widest">
+            © {currentYear} <Link to="/" className="hover:text-white transition-colors">Mai Business Solutions</Link> & <a href="/marketing" className="hover:text-white transition-colors">Mai Marketing Solutions</a>. All rights reserved.
           </p>
-          <div className="flex gap-4 sm:gap-6">
-            <a href="#" className="text-gray-500 hover:text-blue-400 text-xs sm:text-sm transition-colors">
+          <div className="flex gap-6 sm:gap-8 mt-2">
+            <a href="#" className="text-white/30 hover:text-white text-xs transition-colors uppercase tracking-widest">
               Terms of Service
             </a>
-            <Link to="/privacy-policy" className="text-gray-500 hover:text-blue-400 text-xs sm:text-sm transition-colors">
+            <Link to="/privacy-policy" className="text-white/30 hover:text-white text-xs transition-colors uppercase tracking-widest">
               Privacy Policy
             </Link>
           </div>

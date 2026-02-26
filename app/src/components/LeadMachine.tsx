@@ -1,368 +1,233 @@
-import { Target, Lightbulb, Zap, TrendingUp, Users, Mail, BarChart3, CheckCircle, Sparkles, Globe, MessageSquare, Filter, Workflow, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { Target, Lightbulb, Zap, TrendingUp, Users, Mail, ArrowRight, Activity, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "./Navbar";
-import TrialModal from "./TrialModal";
-import DemoModal from "./DemoModal";
+import Footer from "./Footer";
 import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
-import { Badge } from "./ui/badge";
+import { useNavigate } from "react-router-dom";
+import { X } from "lucide-react";
 
 export default function LeadMachine() {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const navigate = useNavigate();
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleContactNavigate = () => {
+    navigate("/");
+    setTimeout(() => {
+      const element = document.getElementById("contact");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   const features = [
     {
-      icon: <Lightbulb className="w-6 h-6" />,
-      title: "Smart Automation Lead Scoring",
-      description: "Smart algorithms analyze 50+ data points to predict lead quality and conversion probability in real-time"
+      icon: Lightbulb,
+      title: "Smart Lead Scoring",
+      description: "Smart algorithms analyze data points to predict lead quality and conversion probability."
     },
     {
-      icon: <Target className="w-6 h-6" />,
+      icon: Target,
       title: "Intelligent Prospecting",
-      description: "Automatically discover and qualify high-value prospects based on your ideal customer profile and market signals"
+      description: "Automatically discover and qualify high-value prospects based on your ideal customer."
     },
     {
-      icon: <Mail className="w-6 h-6" />,
+      icon: Mail,
       title: "Multi-Channel Outreach",
-      description: "Orchestrate personalized campaigns across email, LinkedIn, SMS, and phone with AI-optimized timing and messaging"
+      description: "Orchestrate personalized campaigns across multiple channels with AI-optimized timing."
     },
     {
-      icon: <Sparkles className="w-6 h-6" />,
+      icon: Users,
       title: "Smart Personalization",
-      description: "Generate hyper-personalized messages using AI that analyzes prospect behavior, industry, and engagement patterns"
+      description: "Generate hyper-personalized messages using AI that analyzes prospect behavior."
     },
     {
-      icon: <Workflow className="w-6 h-6" />,
-      title: "Automated Nurturing",
-      description: "Set up intelligent drip campaigns that adapt based on prospect actions and engagement levels"
-    },
-    {
-      icon: <Filter className="w-6 h-6" />,
-      title: "Advanced Segmentation",
-      description: "Dynamic audience segmentation using behavioral data, firmographics, and predictive analytics"
-    },
-    {
-      icon: <BarChart3 className="w-6 h-6" />,
-      title: "Conversion Analytics",
-      description: "Deep insights into pipeline performance, conversion rates, and ROI across all channels and campaigns"
-    },
-    {
-      icon: <Globe className="w-6 h-6" />,
-      title: "CRM Integration",
-      description: "Seamlessly sync with Salesforce, HubSpot, Pipedrive, and 50+ CRM platforms for unified data management"
-    },
-    {
-      icon: <MessageSquare className="w-6 h-6" />,
-      title: "Conversation Intelligence",
-      description: "AI analyzes sales conversations to identify winning patterns, objections, and coaching opportunities"
-    },
-    {
-      icon: <TrendingUp className="w-6 h-6" />,
+      icon: TrendingUp,
       title: "Predictive Forecasting",
-      description: "Accurate revenue predictions using historical data and AI-powered trend analysis"
+      description: "Accurate revenue predictions using historical data and rapid AI-powered trend analysis."
     },
     {
-      icon: <Users className="w-6 h-6" />,
-      title: "Team Collaboration",
-      description: "Real-time lead assignment, task automation, and performance tracking for your entire sales team"
-    },
-    {
-      icon: <Zap className="w-6 h-6" />,
-      title: "Instant Lead Enrichment",
-      description: "Automatically enrich leads with company data, social profiles, and contact information from 200+ sources"
+      icon: Zap,
+      title: "Instant Enrichment",
+      description: "Automatically enrich leads with company data and contact information from secure sources."
     }
   ];
 
-  const benefits = [
-    "Increase qualified leads by 300%",
-    "Reduce lead acquisition costs by 50%",
-    "Improve conversion rates by 45%",
-    "Save 20+ hours per week on manual tasks",
-    "Accelerate sales cycles by 35%",
-    "Boost team productivity by 60%",
-    "Scale outreach without adding headcount",
-    "Maximize ROI with data-driven insights"
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
+    <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black">
       <Helmet>
-        <title>Lead Machine - Smart Automation Lead Generation | MAI Business Solutions</title>
-        <meta name="description" content="The most advanced lead generation and sales acceleration platform. Increase qualified leads by 300%, reduce acquisition costs by 50%, and improve conversion rates by 45%. Smart lead scoring, intelligent prospecting, and multi-channel outreach." />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.maisolutions.co.za/lead-machine" />
-        <meta property="og:site_name" content="MAI Business Solutions" />
-        <meta property="og:title" content="Lead Machine - Smart Automation Lead Generation & Sales Acceleration" />
-        <meta property="og:description" content="The most advanced lead generation platform. Increase qualified leads by 300%, reduce acquisition costs by 50%, and improve conversion rates by 45%. Smart lead scoring, intelligent prospecting, and multi-channel outreach." />
-        <meta property="og:image" content="https://www.maisolutions.co.za/logo.svg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="MAI Business Solutions Logo" />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://www.maisolutions.co.za/lead-machine" />
-        <meta property="twitter:title" content="Lead Machine - Smart Automation Lead Generation" />
-        <meta property="twitter:description" content="Increase qualified leads by 300%, reduce acquisition costs by 50%, and improve conversion rates by 45%. Smart lead scoring, intelligent prospecting, and multi-channel outreach." />
-        <meta property="twitter:image" content="https://www.maisolutions.co.za/logo.svg" />
+        <title>Lead Machine // AI Systems | MAI</title>
       </Helmet>
 
       <Navbar />
 
-      <DemoModal 
-        isOpen={isDemoModalOpen} 
-        onClose={() => setIsDemoModalOpen(false)}
-        productName="Lead Machine"
-      />
-
-      {/* Image Zoom Modal */}
+      {/* Image Modal */}
       {zoomedImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-zoom-out"
+        <div
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 cursor-zoom-out"
           onClick={() => setZoomedImage(null)}
         >
           <button
             onClick={() => setZoomedImage(null)}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+            className="absolute top-8 right-8 text-white hover:text-gray-300 transition-colors"
           >
             <X className="w-8 h-8" />
           </button>
-          <img 
-            src={zoomedImage} 
-            alt="Zoomed dashboard view"
-            className="max-w-full max-h-full object-contain"
+          <img
+            src={zoomedImage}
+            alt="Expanded interface"
+            className="max-w-full max-h-full object-contain border border-white/20"
           />
         </div>
       )}
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-black border-b border-white/10">
+        <div className="absolute inset-x-0 h-px top-0 bg-white/10"></div>
+        <div className="absolute inset-y-0 w-px left-8 md:left-12 lg:left-24 bg-white/10 hidden md:block"></div>
+        <div className="absolute inset-y-0 w-px right-8 md:right-12 lg:right-24 bg-white/10 hidden md:block"></div>
+
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.03]"></div>
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-600 to-blue-500 p-4 mx-auto mb-6 shadow-2xl shadow-cyan-500/30">
-              <Users className="w-full h-full text-white" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl pt-16"
+          >
+            <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-white pl-4 py-1 mb-8">
+              System 02 // Pipeline Architecture
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-300 bg-clip-text text-transparent">
-                Lead Machine
-              </span>
+            <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.05] text-white mb-8 uppercase">
+              LEAD<br />
+              <span className="text-white/60">MACHINE.</span>
             </h1>
-            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-              The most advanced lead generation and sales acceleration platform
+            <p className="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed font-light tracking-wide mb-12">
+              The definitive lead generation and sales acceleration platform. Scale your pipeline organically with our uncompromising automated acquisition engine.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button 
-                onClick={() => setIsDemoModalOpen(true)}
-                className="bg-gradient-to-r from-cyan-600 to-blue-500 hover:from-cyan-700 hover:to-blue-600 text-white shadow-lg shadow-cyan-500/30"
-              >
-                Schedule Demo
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Value Proposition */}
-      <section className="py-16 bg-gradient-to-r from-cyan-600/10 to-blue-500/10 border-y border-cyan-500/20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              Transform Your Sales Pipeline with AI
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-300 bg-clip-text text-transparent mb-2">
-                  10x
-                </div>
-                <p className="text-gray-300">More Qualified Leads</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-300 bg-clip-text text-transparent mb-2">
-                  50%
-                </div>
-                <p className="text-gray-300">Lower Acquisition Cost</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-300 bg-clip-text text-transparent mb-2">
-                  45%
-                </div>
-                <p className="text-gray-300">Higher Conversion Rate</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Dashboard Demo Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-cyan-500/10 text-cyan-300 border-cyan-500/20">
-              Live Dashboard
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Powerful Lead Management at Your Fingertips
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Manage, track, and convert leads with our intuitive AI-powered dashboard
-            </p>
-          </div>
-
-          <div className="max-w-7xl mx-auto space-y-8">
-            {/* Main Dashboard View */}
-            <div 
-              className="rounded-2xl overflow-hidden border border-gray-800 shadow-2xl shadow-cyan-500/10 bg-gray-900/50 cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
-              onClick={() => setZoomedImage("https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761827391571-Screenshot%202025-10-30%20142612.png")}
+            <Button
+              onClick={handleContactNavigate}
+              className="rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-10 font-bold transition-all group border border-white"
             >
-              <img 
-                src="https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761827391571-Screenshot%202025-10-30%20142612.png" 
-                alt="Lead Machine Dashboard showing leads overview with company information, contact details, and status tracking"
-                className="w-full h-auto"
-              />
-            </div>
-
-            {/* Feature Highlights Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Lead Details */}
-              <div 
-                className="rounded-xl overflow-hidden border border-gray-800 shadow-lg shadow-cyan-500/5 bg-gray-900/50 cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95"
-                onClick={() => setZoomedImage("https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761827397032-Screenshot%202025-10-30%20142724.png")}
-              >
-                <img 
-                  src="https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761827397032-Screenshot%202025-10-30%20142724.png" 
-                  alt="Detailed lead information panel showing company data, contact information, and engagement status"
-                  className="w-full h-auto"
-                />
-              </div>
-
-              {/* Lead Generation Parameters */}
-              <div 
-                className="rounded-xl overflow-hidden border border-gray-800 shadow-lg shadow-cyan-500/5 bg-gray-900/50 cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95"
-                onClick={() => setZoomedImage("https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761827402524-Screenshot%202025-10-30%20142815.png")}
-              >
-                <img 
-                  src="https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761827402524-Screenshot%202025-10-30%20142815.png" 
-                  alt="Lead generation parameters form with business type, location, and leads limit settings"
-                  className="w-full h-auto"
-                />
-              </div>
-
-              {/* Email Customization */}
-              <div 
-                className="rounded-xl overflow-hidden border border-gray-800 shadow-lg shadow-cyan-500/5 bg-gray-900/50 cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95"
-                onClick={() => setZoomedImage("https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761827409744-Screenshot%202025-10-30%20142842.png")}
-              >
-                <img 
-                  src="https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761827409744-Screenshot%202025-10-30%20142842.png" 
-                  alt="Email customization interface with subject line and message personalization options"
-                  className="w-full h-auto"
-                />
-              </div>
-
-              {/* Additional Feature - Duplicate for symmetry */}
-              <div className="rounded-xl overflow-hidden border border-gray-800 shadow-lg shadow-cyan-500/5 bg-gray-900/50 flex items-center justify-center p-8">
-                <div className="text-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-600 to-blue-500 p-4 mx-auto mb-4">
-                    <Sparkles className="w-full h-full text-white" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Smart Automation</h3>
-                  <p className="text-sm text-gray-400">Smart automation for maximum efficiency</p>
-                </div>
-              </div>
-            </div>
-          </div>
+              DEPLOY SYSTEM <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </Button>
+          </motion.div>
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge className="mb-4 bg-cyan-500/10 text-cyan-300 border-cyan-500/20">
-              Advanced Capabilities
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Everything You Need to Dominate Lead Generation
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Enterprise-grade features powered by cutting-edge technology and intelligent automation
-            </p>
+      {/* Platform Interface Preview */}
+      <section className="py-24 bg-zinc-950 relative border-b border-white/10">
+        <div className="absolute inset-y-0 w-px left-8 md:left-12 lg:left-24 bg-white/10 hidden md:block"></div>
+        <div className="absolute inset-y-0 w-px right-8 md:right-12 lg:right-24 bg-white/10 hidden md:block"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mb-12 flex justify-between items-end">
+            <div>
+              <h2 className="text-2xl font-bold tracking-tighter uppercase mb-2">INTERFACE PROJECTION</h2>
+              <div className="w-12 h-px bg-white"></div>
+            </div>
+            <div className="hidden sm:flex text-xs font-bold tracking-widest text-white/40 uppercase items-center gap-2">
+              <Activity className="w-4 h-4" /> Live Dashboard
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {features.map((feature, index) => (
-              <Card key={index} className="bg-gray-900/50 border-gray-800 hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-600 to-blue-500 p-2.5 mb-4 text-white">
-                    {feature.icon}
-                  </div>
-                  <CardTitle className="text-xl text-white">{feature.title}</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    {feature.description}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+          <div
+            className="w-full max-w-6xl mx-auto border border-white/20 bg-black cursor-zoom-in group overflow-hidden relative"
+            onClick={() => setZoomedImage("https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761827391571-Screenshot%202025-10-30%20142612.png")}
+          >
+            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+            <img
+              src="https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761827391571-Screenshot%202025-10-30%20142612.png"
+              alt="Dashboard interface"
+              className="w-full h-auto grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+            />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mt-16 border-t border-white/10 pt-16">
+            {[
+              { label: "Pipeline Lift", val: "10x" },
+              { label: "Acquisition Cost", val: "-50%" },
+              { label: "Conversion Rate", val: "+45%" }
+            ].map((stat, idx) => (
+              <div key={idx} className="flex border-l 2 border-white pl-6">
+                <div>
+                  <div className="text-4xl font-bold tracking-tighter text-white mb-1">{stat.val}</div>
+                  <div className="text-xs tracking-[0.2em] font-semibold text-white/50 uppercase">{stat.label}</div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 bg-gray-900/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
-              Measurable Business Impact
-            </h2>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-gray-800/50 border border-gray-700">
-                  <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">{benefit}</span>
+      {/* Features Grid */}
+      <section className="py-24 bg-black relative">
+        <div className="absolute inset-y-0 w-px left-8 md:left-12 lg:left-24 bg-white/10 hidden md:block z-0"></div>
+        <div className="absolute inset-y-0 w-px right-8 md:right-12 lg:right-24 bg-white/10 hidden md:block z-0"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mb-16">
+            <h2 className="text-2xl font-bold tracking-tighter uppercase mb-4">SYSTEM CAPABILITIES</h2>
+            <div className="w-12 h-px bg-white mb-8"></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-0 border border-white/10">
+            {features.map((feature, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: idx * 0.1 }}
+                className={`bg-black p-10 lg:p-12 border-white/10 hover:bg-white/[0.02] transition-colors group relative overflow-hidden ${idx % 3 !== 2 ? "md:border-r" : ""
+                  } ${idx < 3 ? "border-b" : ""}`}
+              >
+                <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
+
+                <div className="w-12 h-12 flex items-center justify-center border border-white/20 mb-8 group-hover:bg-white transition-colors duration-500">
+                  <feature.icon className="w-6 h-6 text-white group-hover:text-black transition-colors duration-500" />
                 </div>
-              ))}
-            </div>
+                <h3 className="text-xl tracking-tight font-bold text-white mb-4 uppercase">{feature.title}</h3>
+                <p className="text-white/60 leading-relaxed font-light">{feature.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="max-w-4xl mx-auto bg-gradient-to-br from-cyan-600 to-blue-500 border-0 text-white">
-            <CardContent className="p-12 text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Ready to 10x Your Lead Generation?
-              </h2>
-              <p className="text-xl text-cyan-100 mb-8">
-                Join top-performing sales teams using AI to dominate their markets
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Button 
-                  size="lg" 
-                  onClick={() => setIsDemoModalOpen(true)}
-                  className="bg-white text-cyan-600 hover:bg-gray-100"
-                >
-                  Contact Sales
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+      <section className="py-32 relative overflow-hidden bg-zinc-950 border-t border-white/10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0,transparent_100%)]"></div>
+        <div className="container mx-auto px-4 sm:px-8 relative z-10 text-center">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tighter uppercase mb-6 text-white">
+            INITIALIZE LEAD GENERATION
+          </h2>
+          <p className="text-white/60 mb-10 max-w-2xl mx-auto text-lg font-light tracking-wide">
+            Automate your pipeline scaling with predictive modeling and multi-channel targeting.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <Button
+              onClick={handleContactNavigate}
+              size="lg"
+              className="w-full sm:w-auto rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-12 font-bold transition-all group border border-white"
+            >
+              START INTEGRATION
+              <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </Button>
+          </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

@@ -1,284 +1,232 @@
-import { Camera, Zap, Clock, Globe, BarChart3, CheckCircle, FileText, Upload, Lightbulb, Database, Shield, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { Camera, Zap, Clock, Database, BarChart3, Shield, ArrowRight, X, Scan, FileText } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import { Button } from "./ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { Badge } from "./ui/badge";
-import TrialModal from "./TrialModal";
-import DemoModal from "./DemoModal";
+import { useNavigate } from "react-router-dom";
 
 export default function InvoiceManager() {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const navigate = useNavigate();
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleContactNavigate = () => {
+    navigate("/");
+    setTimeout(() => {
+      const element = document.getElementById("contact");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   const features = [
     {
-      icon: <Camera className="w-6 h-6" />,
-      title: "Smart Image Capture",
-      description: "Simply snap a photo of any invoice and our system instantly extracts all information with 99.9% accuracy"
+      icon: Camera,
+      title: "Optical Capture",
+      description: "Instantly process physical documents with 99.9% accuracy using our high-fidelity OCR engine."
     },
     {
-      icon: <Lightbulb className="w-6 h-6" />,
-      title: "Intelligent Data Extraction",
-      description: "Advanced OCR and smart algorithms automatically identify vendor details, line items, totals, and dates"
+      icon: Scan,
+      title: "Data Extraction",
+      description: "Algorithms identify vendor vectors, line items, and payment schedules automatically."
     },
     {
-      icon: <Zap className="w-6 h-6" />,
-      title: "Automated Processing",
-      description: "Eliminate manual data entry with instant invoice processing and validation"
+      icon: Zap,
+      title: "Autonomous Processing",
+      description: "Eliminate manual input latency with real-time digital invoice validation."
     },
     {
-      icon: <Clock className="w-6 h-6" />,
-      title: "Smart Payment Tracking",
-      description: "Real-time payment status monitoring with automated reminders and follow-ups"
+      icon: Clock,
+      title: "Payment Tracking",
+      description: "Strict monitoring of payment lifecycles with programmatic follow-up sequences."
     },
     {
-      icon: <Globe className="w-6 h-6" />,
-      title: "Multi-Currency Support",
-      description: "Handle invoices in 150+ currencies with automatic conversion and exchange rate tracking"
+      icon: Database,
+      title: "Cloud Cryptography",
+      description: "Secure, decentralized storage with instant database querying of all historical invoices."
     },
     {
-      icon: <BarChart3 className="w-6 h-6" />,
-      title: "Advanced Analytics",
-      description: "Comprehensive dashboards showing cash flow, payment trends, and vendor insights"
-    },
-    {
-      icon: <Database className="w-6 h-6" />,
-      title: "Cloud Storage",
-      description: "Secure cloud-based storage with instant search and retrieval of all invoice history"
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: "Compliance Ready",
-      description: "Automatic tax compliance, audit trails, and regulatory reporting built-in"
+      icon: Shield,
+      title: "Audit Compliance",
+      description: "Automatic tax compliance mapping, unalterable audit trails, and financial reporting."
     }
   ];
 
-  const benefits = [
-    "Reduce invoice processing time by 90%",
-    "Eliminate data entry errors",
-    "Improve cash flow visibility",
-    "Accelerate payment cycles",
-    "Reduce operational costs by 60%",
-    "Seamless accounting software integration"
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
+    <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black">
       <Helmet>
-        <title>Invoice Manager - Smart Automation Invoice Processing | MAI Business Solutions</title>
-        <meta name="description" content="Transform invoice processing with AI-powered image capture and intelligent data extraction. Simply snap a photo of any invoice and our system instantly extracts all information with 99.9% accuracy. Reduce processing time by 90%." />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.maisolutions.co.za/invoice-manager" />
-        <meta property="og:site_name" content="MAI Business Solutions" />
-        <meta property="og:title" content="Invoice Manager - Smart Automation Invoice Processing" />
-        <meta property="og:description" content="Transform invoice processing with AI-powered image capture and intelligent data extraction. Simply snap a photo of any invoice and our system instantly extracts all information with 99.9% accuracy. Reduce processing time by 90%." />
-        <meta property="og:image" content="https://www.maisolutions.co.za/logo.svg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="MAI Business Solutions Logo" />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://www.maisolutions.co.za/invoice-manager" />
-        <meta property="twitter:title" content="Invoice Manager - Smart Automation Invoice Processing" />
-        <meta property="twitter:description" content="Transform invoice processing with AI-powered image capture and intelligent data extraction. Simply snap a photo of any invoice and our system instantly extracts all information with 99.9% accuracy." />
-        <meta property="twitter:image" content="https://www.maisolutions.co.za/logo.svg" />
+        <title>Invoice Manager // AI Systems | MAI</title>
       </Helmet>
 
       <Navbar />
 
-      <DemoModal 
-        isOpen={isDemoModalOpen} 
-        onClose={() => setIsDemoModalOpen(false)}
-        productName="Invoice Manager"
-      />
-
-      {/* Image Zoom Modal */}
+      {/* Image Modal */}
       {zoomedImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-zoom-out"
+        <div
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 cursor-zoom-out"
           onClick={() => setZoomedImage(null)}
         >
           <button
             onClick={() => setZoomedImage(null)}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+            className="absolute top-8 right-8 text-white hover:text-gray-300 transition-colors"
           >
             <X className="w-8 h-8" />
           </button>
-          <img 
-            src={zoomedImage} 
-            alt="Zoomed dashboard view"
-            className="max-w-full max-h-full object-contain"
+          <img
+            src={zoomedImage}
+            alt="Expanded interface"
+            className="max-w-full max-h-full object-contain border border-white/20"
           />
         </div>
       )}
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-black border-b border-white/10">
+        <div className="absolute inset-x-0 h-px top-0 bg-white/10"></div>
+        <div className="absolute inset-y-0 w-px left-8 md:left-12 lg:left-24 bg-white/10 hidden md:block"></div>
+        <div className="absolute inset-y-0 w-px right-8 md:right-12 lg:right-24 bg-white/10 hidden md:block"></div>
+
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.03]"></div>
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 p-4 mx-auto mb-6 shadow-2xl shadow-blue-500/30">
-              <FileText className="w-full h-full text-white" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl pt-16"
+          >
+            <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-white pl-4 py-1 mb-8">
+              System 05 // Financial Architecture
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                Invoice Manager
-              </span>
+            <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.05] text-white mb-8 uppercase">
+              INVOICE<br />
+              <span className="text-white/60">MANAGER.</span>
             </h1>
-            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-              Transform invoice processing with AI-powered image capture and intelligent data extraction
+            <p className="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed font-light tracking-wide mb-12">
+              Transform the chaotic friction of financial administration. Use AI-powered ocular extraction to process invoices instantaneously with flawless accuracy.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button 
-                onClick={() => setIsDemoModalOpen(true)}
-                className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white shadow-lg shadow-blue-500/30"
-              >
-                Schedule Demo
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Feature Highlight */}
-      <section className="py-16 bg-gradient-to-r from-blue-600/10 to-cyan-500/10 border-y border-blue-500/20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 p-3 shadow-lg">
-                <Upload className="w-full h-full text-white" />
-              </div>
-              <div>
-                <h2 className="text-3xl font-bold text-white">Capture Invoices by Image</h2>
-                <p className="text-blue-300">Revolutionary AI-powered invoice processing</p>
-              </div>
-            </div>
-            <p className="text-lg text-gray-300 leading-relaxed">
-              Simply take a photo of any invoice using your phone or upload a scanned document. Our advanced AI instantly recognizes and extracts all critical information including vendor details, invoice numbers, line items, amounts, dates, and payment terms. No manual typing required - the system automatically populates all fields with 99.9% accuracy, even handling handwritten invoices and complex multi-page documents.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Dashboard Demo Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-blue-500/10 text-blue-300 border-blue-500/20">
-              Live Dashboard
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Powerful Analytics at Your Fingertips
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Get real-time insights into your invoice performance with our comprehensive dashboard
-            </p>
-          </div>
-
-          <div className="max-w-6xl mx-auto">
-            <div 
-              className="rounded-2xl overflow-hidden border border-gray-800 shadow-2xl shadow-blue-500/10 cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
-              onClick={() => setZoomedImage("https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761822248496-Screenshot%202025-10-29%20125332.png")}
+            <Button
+              onClick={handleContactNavigate}
+              className="rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-10 font-bold transition-all group border border-white"
             >
-              <img 
-                src="https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761822248496-Screenshot%202025-10-29%20125332.png" 
-                alt="Invoice Manager Dashboard Demo showing sales analytics, recent activity, and key metrics"
-                className="w-full h-auto"
-              />
-            </div>
-          </div>
+              DEPLOY SYSTEM <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </Button>
+          </motion.div>
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge className="mb-4 bg-blue-500/10 text-blue-300 border-blue-500/20">
-              Powerful Features
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Everything You Need to Manage Invoices
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Comprehensive invoice management powered by cutting-edge AI technology
-            </p>
+      {/* Interface Preview Section */}
+      <section className="py-24 bg-zinc-950 relative border-b border-white/10">
+        <div className="absolute inset-y-0 w-px left-8 md:left-12 lg:left-24 bg-white/10 hidden md:block"></div>
+        <div className="absolute inset-y-0 w-px right-8 md:right-12 lg:right-24 bg-white/10 hidden md:block"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mb-12 flex justify-between items-end">
+            <div>
+              <h2 className="text-2xl font-bold tracking-tighter uppercase mb-2">SYSTEM INTERFACE</h2>
+              <div className="w-12 h-px bg-white"></div>
+            </div>
+            <div className="hidden sm:flex text-xs font-bold tracking-widest text-white/40 uppercase items-center gap-2">
+              <FileText className="w-4 h-4" /> Live Dashboard
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {features.map((feature, index) => (
-              <Card key={index} className="bg-gray-900/50 border-gray-800 hover:border-blue-500/50 transition-all duration-300 backdrop-blur-sm">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 p-2.5 mb-4 text-white">
-                    {feature.icon}
-                  </div>
-                  <CardTitle className="text-xl text-white">{feature.title}</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    {feature.description}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+          <div
+            className="w-full max-w-6xl mx-auto border border-white/20 bg-black cursor-zoom-in group overflow-hidden relative"
+            onClick={() => setZoomedImage("https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761822248496-Screenshot%202025-10-29%20125332.png")}
+          >
+            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none"></div>
+            <img
+              src="https://storage.googleapis.com/tempo-image-previews/user_34NSCeaX7cUfcqgytX4YHlnjfLI-1761822248496-Screenshot%202025-10-29%20125332.png"
+              alt="Dashboard interface"
+              className="w-full h-auto grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+            />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mt-16 border-t border-white/10 pt-16">
+            {[
+              { label: "Processing Speed", val: "-90%" },
+              { label: "Accuracy Rate", val: "99.9%" },
+              { label: "Operational Overhead", val: "-60%" }
+            ].map((stat, idx) => (
+              <div key={idx} className="flex border-l-2 border-white pl-6">
+                <div>
+                  <div className="text-4xl font-bold tracking-tighter text-white mb-1">{stat.val}</div>
+                  <div className="text-xs tracking-[0.2em] font-semibold text-white/50 uppercase">{stat.label}</div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 bg-gray-900/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
-              Transform Your Invoice Workflow
-            </h2>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-gray-800/50 border border-gray-700">
-                  <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">{benefit}</span>
+      {/* Features Grid */}
+      <section className="py-24 bg-black relative">
+        <div className="absolute inset-y-0 w-px left-8 md:left-12 lg:left-24 bg-white/10 hidden md:block z-0"></div>
+        <div className="absolute inset-y-0 w-px right-8 md:right-12 lg:right-24 bg-white/10 hidden md:block z-0"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mb-16">
+            <h2 className="text-2xl font-bold tracking-tighter uppercase mb-4">SYSTEM CAPABILITIES</h2>
+            <div className="w-12 h-px bg-white mb-8"></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-0 border border-white/10">
+            {features.map((feature, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: idx * 0.1 }}
+                className={`bg-black p-10 lg:p-12 border-white/10 hover:bg-white/[0.02] transition-colors group relative overflow-hidden ${idx % 3 !== 2 ? "md:border-r" : ""
+                  } ${idx < 3 ? "border-b" : ""}`}
+              >
+                <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
+
+                <div className="w-12 h-12 flex items-center justify-center border border-white/20 mb-8 group-hover:bg-white transition-colors duration-500">
+                  <feature.icon className="w-6 h-6 text-white group-hover:text-black transition-colors duration-500" />
                 </div>
-              ))}
-            </div>
+                <h3 className="text-xl tracking-tight font-bold text-white mb-4 uppercase">{feature.title}</h3>
+                <p className="text-white/60 leading-relaxed font-light">{feature.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="max-w-4xl mx-auto bg-gradient-to-br from-blue-600 to-cyan-500 border-0 text-white">
-            <CardContent className="p-12 text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Ready to Transform Your WhatsApp Sales?
-              </h2>
-              <p className="text-xl text-blue-100 mb-8">
-                Join hundreds of businesses automating their customer conversations
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Button 
-                  size="lg" 
-                  onClick={() => setIsDemoModalOpen(true)}
-                  className="bg-white text-blue-600 hover:bg-gray-100"
-                >
-                  Contact Sales
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+      <section className="py-32 relative overflow-hidden bg-zinc-950 border-t border-white/10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0,transparent_100%)]"></div>
+        <div className="container mx-auto px-4 sm:px-8 relative z-10 text-center">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tighter uppercase mb-6 text-white">
+            INITIALIZE DATA EXTRACTION
+          </h2>
+          <p className="text-white/60 mb-10 max-w-2xl mx-auto text-lg font-light tracking-wide">
+            Automate invoice handling and protect your enterprise structure from human error.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <Button
+              onClick={handleContactNavigate}
+              size="lg"
+              className="w-full sm:w-auto rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-12 font-bold transition-all group border border-white"
+            >
+              START INTEGRATION
+              <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </Button>
+          </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

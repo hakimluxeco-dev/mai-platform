@@ -1,16 +1,8 @@
 import { useState } from "react";
 import { Mail, MessageCircle, Send } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
 import { useToast } from "./ui/use-toast";
 
 export default function Contact() {
@@ -18,6 +10,7 @@ export default function Contact() {
     name: "",
     email: "",
     company: "",
+    service: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,8 +31,9 @@ export default function Contact() {
           name: formData.name,
           email: formData.email,
           company: formData.company,
+          service: formData.service,
           message: formData.message,
-          subject: `New contact from ${formData.name} - MAI Business Solutions`,
+          subject: `New Contact from ${formData.name} - MAI Business Solutions`,
           from_name: "MAI Business Solutions",
           to: "info@maisolutions.co.za",
         }),
@@ -49,7 +43,7 @@ export default function Contact() {
 
       if (data.success) {
         toast({
-          title: "Message sent successfully!",
+          title: "Transmission Successful",
           description: "We'll get back to you within 24 hours.",
         });
 
@@ -58,6 +52,7 @@ export default function Contact() {
           name: "",
           email: "",
           company: "",
+          service: "",
           message: "",
         });
       } else {
@@ -66,7 +61,7 @@ export default function Contact() {
     } catch (error) {
       console.error("Email error:", error);
       toast({
-        title: "Failed to send message",
+        title: "Transmission Failed",
         description:
           "Please try again or email us directly at info@maisolutions.co.za",
         variant: "destructive",
@@ -77,7 +72,7 @@ export default function Contact() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     setFormData({
       ...formData,
@@ -88,67 +83,59 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-12 sm:py-20 md:py-32 bg-gradient-to-b from-gray-950 to-gray-900 overflow-hidden"
+      className="relative py-24 md:py-32 bg-black overflow-hidden border-t border-white/10 text-white"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-full blur-3xl"></div>
+      {/* Structural Architectural Grid Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.03]"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <Badge className="mb-3 sm:mb-4 bg-blue-500/10 text-blue-300 border-blue-500/20 text-xs sm:text-sm">
-            Get In Touch
-          </Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-4">
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              Start Your AI Journey
-            </span>
-          </h2>
-          <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto px-4">
-            Ready to transform your business? Get in touch with our team for a
-            personalized consultation
+        <div className="text-left mb-16 sm:mb-24 flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-8 gap-8">
+          <div className="max-w-3xl">
+            <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-white pl-4 py-1 mb-6">
+              Contact Us
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-white">
+              START YOUR<br />
+              <span className="text-white/60">PROJECT.</span>
+            </h2>
+          </div>
+          <p className="text-white/60 max-w-sm text-sm leading-relaxed">
+            Ready to transform your enterprise? Initiate contact with our team for a strategic consultation.
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-12">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-0 border border-white/10">
           {/* Contact Form */}
-          <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="text-xl sm:text-2xl text-white">
-                Send us a message
-              </CardTitle>
-              <CardDescription className="text-sm sm:text-base text-gray-400">
-                Fill out the form below and we'll get back to you within 24
-                hours
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+          <div className="p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-white/10 relative group bg-black hover:bg-white/[0.02] transition-colors duration-500">
+            <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
+
+            <h3 className="text-2xl font-bold tracking-tight mb-2 uppercase text-white">CONTACT US</h3>
+            <p className="text-white/60 text-sm leading-relaxed mb-10">
+              Transmit your requirements to our operations team. We will reply within 24 hours.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-xs sm:text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Full Name
+                  <label htmlFor="name" className="block text-xs font-bold text-white/70 mb-2 uppercase tracking-widest">
+                    Name
                   </label>
                   <Input
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Your Name"
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 text-sm sm:text-base"
+                    placeholder="ENTER NAME"
+                    className="bg-transparent border border-white/20 text-white placeholder:text-white/30 focus:border-white text-sm rounded-none h-12 transition-colors uppercase"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-xs sm:text-sm font-medium text-gray-300 mb-2"
-                  >
+                  <label htmlFor="email" className="block text-xs font-bold text-white/70 mb-2 uppercase tracking-widest">
                     Email Address
                   </label>
                   <Input
@@ -157,146 +144,152 @@ export default function Contact() {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="your.name@company.com"
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 text-sm sm:text-base"
+                    placeholder="ENTER@EMAIL.COM"
+                    className="bg-transparent border border-white/20 text-white placeholder:text-white/30 focus:border-white text-sm rounded-none h-12 transition-colors uppercase"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label
-                    htmlFor="company"
-                    className="block text-xs sm:text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Company Name
+                  <label htmlFor="company" className="block text-xs font-bold text-white/70 mb-2 uppercase tracking-widest">
+                    Company
                   </label>
                   <Input
                     id="company"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    placeholder="Your Company"
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 text-sm sm:text-base"
+                    placeholder="ENTER COMPANY"
+                    className="bg-transparent border border-white/20 text-white placeholder:text-white/30 focus:border-white text-sm rounded-none h-12 transition-colors uppercase"
                     disabled={isSubmitting}
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-xs sm:text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Message
+                  <label htmlFor="service" className="block text-xs font-bold text-white/70 mb-2 uppercase tracking-widest">
+                    Service Required
                   </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
                     onChange={handleChange}
-                    placeholder="Tell us about your project..."
-                    rows={5}
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 resize-none text-sm sm:text-base"
+                    className="w-full bg-black border border-white/20 text-white focus:border-white text-sm rounded-none h-12 transition-colors uppercase outline-none px-3 appearance-none cursor-pointer"
                     required
                     disabled={isSubmitting}
-                  />
+                  >
+                    <option value="" disabled>SELECT SERVICE</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="3D Animations">3D Animations</option>
+                    <option value="Video Commercials">Video Commercials</option>
+                    <option value="Software Development">Software Development</option>
+                    <option value="AI Systems">AI Systems</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
-                <Button
-                  type="submit"
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-xs font-bold text-white/70 mb-2 uppercase tracking-widest">
+                  Message
+                </label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="OUTLINE YOUR OBJECTIVES..."
+                  rows={4}
+                  className="bg-transparent border border-white/20 text-white placeholder:text-white/30 focus:border-white resize-none text-sm rounded-none transition-colors uppercase p-4"
+                  required
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white shadow-lg shadow-blue-500/30 group text-sm sm:text-base py-5 sm:py-6 disabled:opacity-50"
-                >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                  <Send className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+                />
+              </div>
 
-          {/* Contact Information */}
-          <div className="space-y-6 sm:space-y-8">
-            <Card className="bg-gradient-to-br from-blue-600 to-cyan-500 border-0 text-white">
-              <CardHeader>
-                <CardTitle className="text-xl sm:text-2xl">
-                  Why Choose MAI?
-                </CardTitle>
-                <CardDescription className="text-blue-100 text-sm sm:text-base">
-                  We're committed to delivering exceptional AI solutions
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3 sm:space-y-4">
-                <div className="flex items-start gap-2.5 sm:gap-3">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-base sm:text-lg">✓</span>
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-10 font-bold transition-all group border border-white mt-4"
+              >
+                {isSubmitting ? "SENDING..." : "SEND EMAIL"}
+                <Send className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+              </Button>
+            </form>
+          </div>
+
+          {/* Contact Information & Value Prop */}
+          <div className="flex flex-col relative group bg-black hover:bg-white/[0.02] transition-colors duration-500">
+            <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
+
+            <div className="p-8 sm:p-12 border-b border-white/10 flex-grow">
+              <h3 className="text-2xl font-bold tracking-tight mb-2 uppercase text-white">WHY CHOOSE MAI?</h3>
+              <p className="text-white/60 text-sm leading-relaxed mb-10">
+                We engineer elite digital architecture and high-performance business solutions.
+              </p>
+
+              <div className="space-y-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 border border-white/20 flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-sm font-bold">01</span>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1 text-sm sm:text-base">
-                      Expert Team
-                    </h4>
-                    <p className="text-xs sm:text-sm text-blue-100">
-                      Industry-leading AI specialists with 10+ years experience
+                    <h4 className="font-bold text-sm tracking-widest uppercase text-white mb-2">Elite Infrastructure</h4>
+                    <p className="text-xs text-white/50 leading-relaxed font-mono uppercase">
+                      Specialists designing high-end digital solutions tailored for scale.
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-2.5 sm:gap-3">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-base sm:text-lg">✓</span>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 border border-white/20 flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-sm font-bold">02</span>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1 text-sm sm:text-base">
-                      Proven Track Record
-                    </h4>
-                    <p className="text-xs sm:text-sm text-blue-100">
-                      500+ successful implementations across industries
+                    <h4 className="font-bold text-sm tracking-widest uppercase text-white mb-2">Verified Yields</h4>
+                    <p className="text-xs text-white/50 leading-relaxed font-mono uppercase">
+                      Hundreds of operational deployments delivering quantifiable ROI.
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-2.5 sm:gap-3">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-base sm:text-lg">✓</span>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 border border-white/20 flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-sm font-bold">03</span>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1 text-sm sm:text-base">
-                      Ongoing Support
-                    </h4>
-                    <p className="text-xs sm:text-sm text-blue-100">
-                      24/7 dedicated support and continuous optimization
+                    <h4 className="font-bold text-sm tracking-widest uppercase text-white mb-2">Continuous Operations</h4>
+                    <p className="text-xs text-white/50 leading-relaxed font-mono uppercase">
+                      24/7 dedicated system monitoring and evolutionary support.
                     </p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            <div className="space-y-3 sm:space-y-4">
-              <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-blue-500/50 transition-colors">
-                <CardContent className="flex items-center gap-3 sm:gap-4 p-4 sm:p-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-xs sm:text-sm text-gray-400">
-                      Email us at
-                    </p>
-                    <p className="text-sm sm:text-base text-white font-medium truncate">
-                      info@maisolutions.co.za
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+            <div className="grid sm:grid-cols-2 gap-0">
+              <div className="p-8 border-b sm:border-b-0 sm:border-r border-white/10 flex items-center gap-4 hover:bg-white/[0.04] transition-colors cursor-pointer group/link">
+                <Mail className="w-5 h-5 text-white/40 group-hover/link:text-white transition-colors" />
+                <div className="min-w-0">
+                  <p className="text-xs text-white/40 font-bold tracking-widest uppercase mb-1">
+                    Secure Comm
+                  </p>
+                  <p className="text-sm text-white font-mono truncate">
+                    INFO@MAISOLUTIONS.CO.ZA
+                  </p>
+                </div>
+              </div>
 
-              <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-blue-500/50 transition-colors">
-                <CardContent className="flex items-center gap-3 sm:gap-4 p-4 sm:p-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                    <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-400" />
-                  </div>
-                  <div>
-                    <p className="text-xs sm:text-sm text-gray-400">
-                      WhatsApp us
-                    </p>
-                    <p className="text-sm sm:text-base text-white font-medium">
-                      +27 72 845 6172
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="p-8 flex items-center gap-4 hover:bg-white/[0.04] transition-colors cursor-pointer group/link">
+                <MessageCircle className="w-5 h-5 text-white/40 group-hover/link:text-white transition-colors" />
+                <div>
+                  <p className="text-xs text-white/40 font-bold tracking-widest uppercase mb-1">
+                    Direct Wire
+                  </p>
+                  <p className="text-sm text-white font-mono">
+                    +27 72 845 6172
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

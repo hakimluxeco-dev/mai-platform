@@ -1,247 +1,185 @@
-import { Lightbulb, Target, Zap, Users, Award, TrendingUp, Shield } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Crosshair, Target, Shield, Zap, ArrowRight } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "./Navbar";
 import { Button } from "./ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { Badge } from "./ui/badge";
+import { motion } from "framer-motion";
+import SEO from "./SEO";
 
 export default function About() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const values = [
     {
-      icon: <Lightbulb className="w-6 h-6" />,
-      title: "Innovation First",
-      description: "We push the boundaries of technology to deliver solutions that transform businesses"
+      icon: <Crosshair className="w-5 h-5" />,
+      title: "PRECISION ENGINEERING",
+      description: "We deploy highly targeted solutions without bloat or excess. Every system is architected for maximum impact."
     },
     {
-      icon: <Target className="w-6 h-6" />,
-      title: "Results Driven",
-      description: "Every solution is designed to deliver measurable ROI and tangible business outcomes"
+      icon: <Target className="w-5 h-5" />,
+      title: "TACTICAL EXECUTION",
+      description: "Strategies remain theories until executed. We enforce strict protocols to ensure reliable, high-performance deployment."
     },
     {
-      icon: <Users className="w-6 h-6" />,
-      title: "Client Partnership",
-      description: "We work alongside our clients as trusted partners in their digital transformation journey"
+      icon: <Shield className="w-5 h-5" />,
+      title: "SECURE INFRASTRUCTURE",
+      description: "Data integrity and infrastructural security are the non-negotiable foundations of every solution we build."
     },
     {
-      icon: <Shield className="w-6 h-6" />,
-      title: "Trust & Security",
-      description: "Enterprise-grade security and data protection are built into everything we create"
+      icon: <Zap className="w-5 h-5" />,
+      title: "RAPID DEPLOYMENT",
+      description: "Speed is a weapon. Our standardized frameworks allow us to rapidly scale and iterate without compromising quality."
     }
   ];
 
-  const stats = [
-    { number: "500+", label: "Businesses Transformed" },
-    { number: "95%", label: "Client Satisfaction" },
-    { number: "10M+", label: "Processes Automated" },
-    { number: "24/7", label: "Support Available" }
-  ];
+  const handleContactNavigate = () => {
+    navigate("/");
+    setTimeout(() => {
+      const element = document.getElementById("contact");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
+    <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
       <Navbar />
-      
+
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+      <section className="relative pt-32 pb-20 overflow-hidden border-b border-white/10">
+        <div className="absolute inset-x-0 top-0 h-px bg-white/10"></div>
+        <div className="absolute inset-y-0 left-0 w-px bg-white/10 hidden md:block md:ml-12 lg:ml-24"></div>
+        <div className="absolute inset-y-0 right-0 w-px bg-white/10 hidden md:block md:mr-12 lg:mr-24"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16">
+          <div className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              className="mb-8 overflow-hidden"
+            >
+              <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-white pl-4 py-1">
+                Sys.Profile // MAI
+              </div>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter uppercase mb-6"
+            >
+              ARCHITECTING<br />
+              <span className="text-white/60">THE APEX.</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="text-lg text-white/60 max-w-2xl leading-relaxed font-light tracking-wide mb-10"
+            >
+              MAI Business Solutions engineers elite digital architecture. We bridge the gap between complex operational demands and high-performance digital solutions, providing organizations with the infrastructure required to dominate their markets.
+            </motion.p>
+          </div>
         </div>
+      </section>
+
+      {/* The Story / Directive */}
+      <section className="py-24 relative border-b border-white/10">
+        <div className="absolute inset-y-0 left-0 w-px bg-white/10 hidden md:block md:ml-12 lg:ml-24"></div>
+        <div className="absolute inset-y-0 right-0 w-px bg-white/10 hidden md:block md:mr-12 lg:mr-24"></div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-blue-500/10 text-blue-300 border-blue-500/20">
-              About MAI Business Solutions
-            </Badge>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                Smart Solutions for Modern Business
-              </span>
-            </h1>
-            <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-              At MAI Business Solutions we're redefining how businesses operate with intelligent automation tools that make enterprise-grade solutions accessible to businesses of all sizes
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Mission Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600/10 to-cyan-500/10 border-y border-blue-500/20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 p-3 shadow-lg">
-                <Lightbulb className="w-full h-full text-white" />
-              </div>
-              <div>
-                <h2 className="text-3xl font-bold text-white">Our Mission</h2>
-                <p className="text-blue-300">Empowering businesses through intelligent systems</p>
+          <div className="grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-4">
+              <h2 className="text-2xl font-bold tracking-tighter uppercase mb-4">THE DIRECTIVE</h2>
+              <div className="w-12 h-px bg-white mb-8"></div>
+            </div>
+            <div className="lg:col-span-8">
+              <div className="prose prose-invert max-w-none text-white/70 text-lg font-light leading-relaxed space-y-8">
+                <p>
+                  MAI Business Solutions was established to dismantle the inefficiency plaguing modern enterprises. Through our extensive tenure in operations and systems design, we identified a critical vulnerability: organizations possessing immense potential, paralyzed by fractured digital infrastructures and outdated methodologies.
+                </p>
+                <p>
+                  We deployed a new paradigm. We do not merely offer "services"—we engineer systematic dominance. From cinematic video production that commands authority, to precision software architectures that ruthlessly automate operations, all the way to targeted marketing and autonomous AI agents.
+                </p>
+                <p className="border-l-2 border-white pl-6 text-white text-xl uppercase tracking-wider font-semibold my-12">
+                  "Our operation is built on four core pillars: Precision Marketing, Cinematic Production, Software Architecture, and Autonomous Intelligence. We build the apex."
+                </p>
+                <p>
+                  Today, we architect digital solutions for leading enterprises, optimizing their infrastructure to not just compete, but completely outclass the opposition. Our commitment is singular: to build systems that scale infinitely and perform flawlessly.
+                </p>
               </div>
             </div>
-            <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              We believe every business deserves access to cutting-edge technology. Our goal is to bridge the gap between complex automation systems and real-world business needs, delivering solutions that are powerful yet intuitive, sophisticated yet accessible.
-            </p>
-            <p className="text-lg text-gray-300 leading-relaxed">
-              We're not just building software—we're creating intelligent systems that adapt and evolve with your business. From automating repetitive tasks to uncovering hidden insights, we help you work smarter, faster, and more efficiently.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
-              Impact by the Numbers
-            </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2">
-                    {stat.number}
-                  </div>
-                  <p className="text-gray-400">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Core Values Grid */}
+      <section className="py-24 relative border-b border-white/10 bg-zinc-950">
+        <div className="absolute inset-x-0 top-0 h-px bg-white/10"></div>
+        <div className="absolute inset-y-0 left-0 w-px bg-white/10 hidden md:block md:ml-12 lg:ml-24"></div>
+        <div className="absolute inset-y-0 right-0 w-px bg-white/10 hidden md:block md:mr-12 lg:mr-24"></div>
 
-      {/* Values Section */}
-      <section className="py-20 bg-gray-900/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge className="mb-4 bg-blue-500/10 text-blue-300 border-blue-500/20">
-              Our Values
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              What Drives Us Forward
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Our core values guide every decision we make and every solution we build
-            </p>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mb-16">
+            <h2 className="text-2xl font-bold tracking-tighter uppercase mb-4">OPERATIONAL PILLARS</h2>
+            <div className="w-12 h-px bg-white mb-8"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-white/10">
             {values.map((value, index) => (
-              <Card key={index} className="bg-gray-900/50 border-gray-800 hover:border-blue-500/50 transition-all duration-300">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 p-2.5 mb-4 text-white">
-                    {value.icon}
-                  </div>
-                  <CardTitle className="text-xl text-white">{value.title}</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    {value.description}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+              <div key={index} className="group relative p-8 md:p-12 bg-black border-b sm:border-b-0 sm:border-r border-white/10 hover:bg-white/[0.02] transition-colors duration-500 last:border-r-0">
+                <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
+                <div className="w-12 h-12 flex items-center justify-center border border-white/10 mb-8 bg-zinc-950 text-white/80 group-hover:border-white/30 transition-colors">
+                  {value.icon}
+                </div>
+                <h3 className="text-lg font-bold tracking-tight mb-4 uppercase text-white">{value.title}</h3>
+                <p className="text-white/50 text-sm leading-relaxed">
+                  {value.description}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Story Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 p-3 shadow-lg">
-                <TrendingUp className="w-full h-full text-white" />
-              </div>
-              <div>
-                <h2 className="text-3xl font-bold text-white">Our Story</h2>
-                <p className="text-blue-300">From vision to reality</p>
-              </div>
-            </div>
-            <div className="space-y-6 text-gray-300 leading-relaxed">
-              <p className="text-lg">
-                MAI Business Solutions was founded with a simple yet powerful vision: to make intelligent automation work for businesses, not the other way around. We saw too many companies struggling with complex, expensive systems that promised the world but delivered little.
-              </p>
-              <p className="text-lg">
-                Our founders, with decades of combined experience in technology and business operations, set out to create something different—intelligent systems that are practical, affordable, and genuinely transformative. We started with our flagship products: Invoice Manager, Lead Machine, and Stock Manager, each designed to solve real business pain points with elegant, smart solutions.
-              </p>
-              <p className="text-lg">
-                Today, we're proud to serve hundreds of businesses across industries, helping them automate processes, reduce costs, and unlock new growth opportunities. But we're just getting started. Our commitment to innovation means we're constantly evolving our solutions and finding new ways to deliver value to our clients.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Expertise Section */}
-      <section className="py-20 bg-gray-900/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 p-3 shadow-lg">
-                <Award className="w-full h-full text-white" />
-              </div>
-              <div>
-                <h2 className="text-3xl font-bold text-white">Our Expertise</h2>
-                <p className="text-blue-300">Technology meets business acumen</p>
-              </div>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div className="p-6 rounded-lg bg-gray-800/50 border border-gray-700">
-                <h3 className="text-xl font-semibold text-white mb-3">Intelligent Automation</h3>
-                <p className="text-gray-400">
-                  Smart systems that learn from your business patterns to automate repetitive tasks and workflows
-                </p>
-              </div>
-              <div className="p-6 rounded-lg bg-gray-800/50 border border-gray-700">
-                <h3 className="text-xl font-semibold text-white mb-3">Business Process Automation</h3>
-                <p className="text-gray-400">
-                  Intelligent workflow optimization, document processing, and end-to-end automation solutions
-                </p>
-              </div>
-              <div className="p-6 rounded-lg bg-gray-800/50 border border-gray-700">
-                <h3 className="text-xl font-semibold text-white mb-3">Data Analytics</h3>
-                <p className="text-gray-400">
-                  Real-time dashboards, predictive modeling, and actionable business intelligence
-                </p>
-              </div>
-              <div className="p-6 rounded-lg bg-gray-800/50 border border-gray-700">
-                <h3 className="text-xl font-semibold text-white mb-3">Custom Solutions</h3>
-                <p className="text-gray-400">
-                  Tailored systems designed specifically for your unique business challenges and goals
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="max-w-4xl mx-auto bg-gradient-to-br from-blue-600 to-cyan-500 border-0 text-white">
-            <CardContent className="p-12 text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Ready to Transform Your Business?
-              </h2>
-              <p className="text-xl text-blue-100 mb-8">
-                Join hundreds of forward-thinking businesses leveraging AI to gain a competitive edge
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Link to="/">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
-                    Explore Our Solutions
-                  </Button>
-                </Link>
-                <Link to="/#products">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                    View Products
-                  </Button>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
+      <section className="py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0,transparent_100%)]"></div>
+        <div className="container mx-auto px-4 sm:px-8 relative z-10 text-center">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tighter uppercase mb-6 text-white">
+            READY TO DEPLOY?
+          </h2>
+          <p className="text-white/60 mb-10 max-w-2xl mx-auto text-lg font-light tracking-wide">
+            Integrate our enterprise-grade solutions into your operation and establish total market dominance.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <Button
+              onClick={handleContactNavigate}
+              size="lg"
+              className="w-full sm:w-auto rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-12 font-bold transition-all group border border-white"
+            >
+              START YOUR PROJECT
+              <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </Button>
+            <Link to="/">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto rounded-none h-16 bg-transparent border-white/20 text-white hover:bg-white/5 hover:border-white text-sm tracking-[0.15em] px-12 font-bold transition-all"
+              >
+                RETURN TO BASE
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

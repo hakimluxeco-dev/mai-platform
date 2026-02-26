@@ -149,6 +149,9 @@ export default function Hero() {
               background: 'transparent',
             }}
           />
+          <p className="text-white/30 text-[10px] text-center tracking-[0.25em] uppercase absolute bottom-2 left-0 right-0 pointer-events-none">
+            Drag to rotate · Scroll to zoom
+          </p>
         </div>
         {/* Background Technical Metrics Overlay Removed */}
 

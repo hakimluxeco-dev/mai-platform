@@ -14,6 +14,7 @@ interface Product {
   features: string[];
   color: string;
   gradient: string;
+  cssGradient: string;
   link: string;
 }
 
@@ -26,6 +27,7 @@ const products: Product[] = [
     features: ["Social Media Management", "SEO & Content Strategy", "Performance Marketing", "Brand Identity"],
     color: "blue",
     gradient: "from-blue-600 to-cyan-500",
+    cssGradient: "linear-gradient(135deg, #2563eb, #06b6d4)",
     link: "/marketing",
   },
   {
@@ -36,6 +38,7 @@ const products: Product[] = [
     features: ["3D Modelling", "Character Animation", "Cinematic Renders", "Real-Time WebGL"],
     color: "orange",
     gradient: "from-orange-500 to-yellow-400",
+    cssGradient: "linear-gradient(135deg, #f97316, #facc15)",
     link: "/3d-animation",
   },
   {
@@ -46,6 +49,7 @@ const products: Product[] = [
     features: ["Corporate Storytelling", "Social Media Ads", "Product Showcases", "Event Coverage"],
     color: "purple",
     gradient: "from-purple-600 to-pink-500",
+    cssGradient: "linear-gradient(135deg, #9333ea, #ec4899)",
     link: "/video-commercials",
   },
   {
@@ -56,6 +60,7 @@ const products: Product[] = [
     features: ["Custom Web Apps", "Mobile Development", "Enterprise CRMs", "API Integrations"],
     color: "indigo",
     gradient: "from-indigo-600 to-blue-500",
+    cssGradient: "linear-gradient(135deg, #4f46e5, #3b82f6)",
     link: "/software-development",
   },
   {
@@ -66,6 +71,7 @@ const products: Product[] = [
     features: ["WhatsApp Assistants", "Automated Invoicing", "Lead Generation Bots", "Virtual Receptionists"],
     color: "cyan",
     gradient: "from-cyan-500 to-emerald-400",
+    cssGradient: "linear-gradient(135deg, #06b6d4, #10b981)",
     link: "/ai-systems",
   },
 ];
@@ -134,8 +140,11 @@ export default function Products() {
               <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
 
               <div className="p-10 h-full flex flex-col">
-                <div className={`w-12 h-12 flex items-center justify-center border border-white/20 mb-8 group-hover:bg-white group-hover:text-black transition-colors duration-500`}>
-                  <div className="text-white group-hover:text-black transition-colors duration-500 scale-75">{product.icon}</div>
+                <div
+                  className="w-12 h-12 flex items-center justify-center border border-white/20 mb-8 transition-all duration-500"
+                  style={hoveredProduct === product.id ? { background: product.cssGradient, borderColor: 'transparent' } : {}}
+                >
+                  <div className="text-white scale-75">{product.icon}</div>
                 </div>
 
                 <h3 className="text-2xl font-bold tracking-tight mb-4 uppercase">{product.title}</h3>

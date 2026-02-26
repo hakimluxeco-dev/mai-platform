@@ -144,7 +144,7 @@ export default function Products() {
                 className="absolute inset-0 pointer-events-none transition-opacity duration-700"
                 style={{
                   background: product.cssGradient,
-                  opacity: hoveredProduct === product.id ? 0.1 : 0,
+                  opacity: hoveredProduct === product.id ? 0.18 : 0,
                 }}
               />
               <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>

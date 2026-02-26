@@ -135,6 +135,9 @@ export default function Products() {
               className="group relative border-b sm:border-b-0 sm:border-r border-white/10 last:border-r-0 last:border-b-0 sm:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(even)]:border-r lg:[&:nth-child(4n)]:border-r-0 sm:[&:nth-child(1)]:border-b sm:[&:nth-child(2)]:border-b lg:[&:nth-child(1)]:border-b-0 lg:[&:nth-child(2)]:border-b-0 bg-transparent transition-colors duration-500 overflow-hidden"
               onMouseEnter={() => setHoveredProduct(product.id)}
               onMouseLeave={() => setHoveredProduct(null)}
+              onTouchStart={() => setHoveredProduct(product.id)}
+              onTouchEnd={() => setHoveredProduct(null)}
+              onTouchCancel={() => setHoveredProduct(null)}
             >
               {/* Gradient color overlay */}
               <div

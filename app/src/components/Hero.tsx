@@ -135,7 +135,7 @@ export default function Hero() {
         <div className="h-[350px] sm:h-[450px] lg:h-[700px] w-full relative z-40">
           {/* @ts-ignore - model-viewer is a web component loaded via CDN */}
           <model-viewer
-            src="/models/hero_model.glb"
+            src="/models/scene.glb"
             alt="MAI Business Solutions AI Robot"
             autoplay
             camera-controls

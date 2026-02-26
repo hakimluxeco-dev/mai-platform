@@ -85,7 +85,7 @@ export default function Animation3D() {
                         >
                             {/* @ts-ignore */}
                             <model-viewer
-                                src="/models/scene.glb"
+                                src="/models/hero_model.glb"
                                 alt="MAI 3D Robot Model"
                                 autoplay
                                 camera-controls

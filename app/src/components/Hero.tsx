@@ -135,12 +135,14 @@ export default function Hero() {
         <div className="h-[350px] sm:h-[450px] lg:h-[700px] w-full relative z-40">
           {/* @ts-ignore - model-viewer is a web component loaded via CDN */}
           <model-viewer
-            src="/models/scene.gltf"
+            src="/models/hero_model.glb"
             alt="MAI Business Solutions AI Robot"
             autoplay
+            camera-controls
             shadow-intensity="1"
             exposure="0.8"
             environment-image="neutral"
+            loading="eager"
             style={{
               width: '100%',
               height: '100%',

@@ -113,9 +113,12 @@ export default function Animation3D() {
                                     </p>
                                 </div>
                             </model-viewer>
-                            <p className="text-white/30 text-xs text-center tracking-widest uppercase mt-2">
-                                Drag to rotate · Scroll to zoom
-                            </p>
+                            <div className="flex justify-center mt-3 pointer-events-none">
+                                <span className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/70 text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 rounded-full">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20" /></svg>
+                                    Drag to rotate · Scroll to zoom
+                                </span>
+                            </div>
                         </motion.div>
                     </div>
                 </div>

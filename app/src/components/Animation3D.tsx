@@ -124,6 +124,47 @@ export default function Animation3D() {
                 </div>
             </section>
 
+            {/* Video Showreel */}
+            <section className="py-20 border-t border-white/10 bg-black">
+                <div className="container mx-auto px-4 sm:px-8 max-w-7xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mb-10"
+                    >
+                        <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-white pl-4 py-1 mb-4">
+                            Showreel
+                        </div>
+                        <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter">
+                            SEE IT IN<br />
+                            <span className="text-white/60">MOTION.</span>
+                        </h2>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="relative w-full rounded-none overflow-hidden border border-white/10"
+                        style={{ aspectRatio: '16/9' }}
+                    >
+                        <video
+                            className="w-full h-full object-cover"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            controls
+                        >
+                            <source src="/3d_showreel.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </motion.div>
+                </div>
+            </section>
+
             {/* Services Grid */}
             <section className="py-24 border-t border-white/10">
                 <div className="container mx-auto px-4 sm:px-8 max-w-7xl">

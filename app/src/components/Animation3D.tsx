@@ -85,13 +85,15 @@ export default function Animation3D() {
                         >
                             {/* @ts-ignore */}
                             <model-viewer
-                                src="/models/hero_model.gltf"
+                                src="/models/hero_model.glb"
                                 alt="MAI 3D Robot Model"
                                 autoplay
                                 camera-controls
                                 shadow-intensity="1"
                                 exposure="0.85"
                                 environment-image="neutral"
+                                loading="eager"
+                                reveal="auto"
                                 style={{ width: "100%", height: "100%", background: "transparent" }}
                             />
                             <p className="text-white/30 text-xs text-center tracking-widest uppercase mt-2">

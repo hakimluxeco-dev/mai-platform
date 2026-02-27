@@ -102,6 +102,12 @@ export default function Navbar() {
             >
               About Us
             </Link>
+            <Link
+              to="/careers"
+              className="text-white/70 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] uppercase font-semibold"
+            >
+              Careers
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}

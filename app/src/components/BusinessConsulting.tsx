@@ -60,7 +60,7 @@ export default function BusinessConsulting() {
     const handleContact = () => setModalOpen(true);
 
     return (
-        <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
+        <>
             <SEO
                 title="Business Consulting & Competitive Analysis | MAI Business Solutions"
                 description="Strategic consulting and competitive intelligence services. We analyze markets, dismantle competitor advantages, and engineer precision growth systems for your business."
@@ -261,7 +261,8 @@ export default function BusinessConsulting() {
                     </Button>
                 </div>
             </section>
-        </div>
-        <DemoModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+        </div >
+            <DemoModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+        </>
     );
 }

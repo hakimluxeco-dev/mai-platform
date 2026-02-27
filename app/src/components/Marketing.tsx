@@ -80,42 +80,6 @@ export default function Marketing() {
                 </div>
             </section>
 
-            {/* Performance Data Manifest */}
-            <section className="border-b border-white/10 bg-zinc-950">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col md:flex-row items-stretch border-x border-white/10">
-                        {/* Left label column */}
-                        <div className="flex items-center justify-between md:justify-start md:flex-col md:justify-center gap-2 px-8 py-6 md:py-10 border-b md:border-b-0 md:border-r border-white/10 md:w-56 shrink-0">
-                            <span className="text-white/30 text-[10px] tracking-[0.35em] uppercase font-mono block">Performance</span>
-                            <span className="text-white/30 text-[10px] tracking-[0.35em] uppercase font-mono block">Data Index</span>
-                        </div>
-
-                        {/* Stats */}
-                        {[
-                            { value: "400%", label: "Average ROI Increase", index: "01" },
-                            { value: "12,000+", label: "Leads Generated", index: "02" },
-                            { value: "94%", label: "Client Retention Rate", index: "03" },
-                            { value: "380+", label: "Campaigns Deployed", index: "04" },
-                        ].map((stat, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: i * 0.1 }}
-                                className="group flex-1 px-8 py-10 border-b md:border-b-0 md:border-r border-white/10 last:border-r-0 hover:bg-white/[0.02] transition-colors duration-300 relative overflow-hidden"
-                            >
-                                <div className="absolute top-0 left-0 right-0 h-[1px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
-                                <div className="text-white/20 text-[10px] font-mono tracking-widest mb-4">/{stat.index}</div>
-                                <div className="text-3xl sm:text-4xl font-bold tracking-tighter text-white mb-1">
-                                    {stat.value}
-                                </div>
-                                <div className="text-white/40 text-xs uppercase tracking-[0.2em] font-medium">{stat.label}</div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* Colorful Bar Chart Section */}
             <section className="py-24 bg-zinc-950 border-b border-white/10">

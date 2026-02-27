@@ -25,12 +25,12 @@ const channels = [
 ];
 
 const barData = [
-    { month: "Jan", organic: 35, paid: 20, email: 15 },
-    { month: "Feb", organic: 42, paid: 28, email: 18 },
-    { month: "Mar", organic: 55, paid: 35, email: 22 },
-    { month: "Apr", organic: 48, paid: 45, email: 28 },
-    { month: "May", organic: 72, paid: 58, email: 32 },
-    { month: "Jun", organic: 85, paid: 70, email: 40 },
+    { month: "Jan", organic: 35, paid: 32, email: 15 },
+    { month: "Feb", organic: 42, paid: 40, email: 18 },
+    { month: "Mar", organic: 55, paid: 48, email: 22 },
+    { month: "Apr", organic: 48, paid: 58, email: 28 },
+    { month: "May", organic: 72, paid: 70, email: 32 },
+    { month: "Jun", organic: 85, paid: 82, email: 40 },
 ];
 
 const results = [

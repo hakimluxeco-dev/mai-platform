@@ -91,11 +91,10 @@ export default function About() {
         </div>
       </section>
 
-      {/* The Story / Directive */}
+      {/* The Directive */}
       <section className="py-24 relative border-b border-white/10">
         <div className="absolute inset-y-0 left-0 w-px bg-white/10 hidden md:block md:ml-12 lg:ml-24"></div>
         <div className="absolute inset-y-0 right-0 w-px bg-white/10 hidden md:block md:mr-12 lg:mr-24"></div>
-
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4">
@@ -105,19 +104,132 @@ export default function About() {
             <div className="lg:col-span-8">
               <div className="prose prose-invert max-w-none text-white/70 text-lg font-light leading-relaxed space-y-8">
                 <p>
-                  MAI Business Solutions was established to dismantle the inefficiency plaguing modern enterprises. Through our extensive tenure in operations and systems design, we identified a critical vulnerability: organizations possessing immense potential, paralyzed by fractured digital infrastructures and outdated methodologies.
+                  At MAI Business Solutions, we operate as a strategic consulting and business intelligence firm engineered for one objective: market dominance.
+                </p>
+                <p className="text-white font-semibold text-xl tracking-wide">
+                  We analyze. We architect. We deploy.
                 </p>
                 <p>
-                  We deployed a new paradigm. We do not merely offer "services"—we engineer systematic dominance. From cinematic video production that commands authority, to precision software architectures that ruthlessly automate operations, all the way to targeted marketing and autonomous AI agents.
+                  Our mandate is to dissect competitive landscapes, identify structural weaknesses within industries, and construct precision-built growth systems that elevate revenue, brand authority, and operational leverage. Where others offer fragmented services, we deliver unified strategic frameworks.
                 </p>
                 <p className="border-l-2 border-white pl-6 text-white text-xl uppercase tracking-wider font-semibold my-12">
-                  "Our operation is built on four core pillars: Precision Marketing, Cinematic Production, Software Architecture, and Autonomous Intelligence. We build the apex."
+                  "MAI Business Solutions is not a service provider. We are a strategic growth partner."
                 </p>
                 <p>
-                  Today, we architect digital solutions for leading enterprises, optimizing their infrastructure to not just compete, but completely outclass the opposition. Our commitment is singular: to build systems that scale infinitely and perform flawlessly.
+                  We engineer businesses for authority, scalability, and sustained market superiority.
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Strategic Intelligence */}
+      <section className="py-24 relative border-b border-white/10 bg-zinc-950">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-4">
+              <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-white pl-4 py-1 mb-4">Intelligence Layer</div>
+              <h2 className="text-2xl font-bold tracking-tighter uppercase mb-4">STRATEGIC INTELLIGENCE &amp; COMPETITIVE ANALYSIS</h2>
+              <div className="w-12 h-px bg-white mb-8"></div>
+            </div>
+            <div className="lg:col-span-8 space-y-8">
+              <p className="text-white/70 text-lg font-light leading-relaxed">
+                Every engagement begins with deep operational and competitive analysis. We evaluate:
+              </p>
+              <div className="space-y-4">
+                {[
+                  "Market positioning and competitor infrastructure",
+                  "Revenue bottlenecks and acquisition inefficiencies",
+                  "Brand authority gaps and digital performance metrics",
+                  "Automation and systems vulnerabilities",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4 border-l border-white/20 pl-6 py-2">
+                    <div className="w-1.5 h-1.5 bg-white mt-2 shrink-0"></div>
+                    <p className="text-white/70 text-sm leading-relaxed tracking-wide">{item}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-white/60 text-base font-light leading-relaxed pt-4">
+                From this intelligence, we engineer structured growth packs — tailored frameworks designed to outperform competitors and compound revenue.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Engineered Growth Systems */}
+      <section className="py-24 relative border-b border-white/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mb-16">
+            <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-white pl-4 py-1 mb-4">Execution Divisions</div>
+            <h2 className="text-2xl font-bold tracking-tighter uppercase mb-2">ENGINEERED GROWTH SYSTEMS</h2>
+            <p className="text-white/50 text-sm">Our execution capabilities span four high-impact divisions:</p>
+            <div className="w-12 h-px bg-white mt-6"></div>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-0 border border-white/10">
+            {[
+              {
+                num: "01",
+                title: "3D Animation & Visual Authority",
+                body: "High-end 3D animation and cinematic production assets that command attention and elevate brand perception to enterprise level."
+              },
+              {
+                num: "02",
+                title: "Precision Digital Marketing",
+                body: "Data-driven acquisition systems built to scale traffic, optimize conversion pathways, and dominate targeted market segments."
+              },
+              {
+                num: "03",
+                title: "Brand Architecture",
+                body: "Strategic brand positioning, identity engineering, and authority frameworks designed to control perception within competitive markets."
+              },
+              {
+                num: "04",
+                title: "AI Systems Engineering",
+                body: "Custom-built AI infrastructures and automation frameworks that reduce operational friction, enhance decision velocity, and create scalable digital ecosystems."
+              },
+            ].map((div, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="group p-10 border-b sm:border-r border-white/10 hover:bg-white/[0.02] transition-colors duration-500 last:border-b-0 last:border-r-0 [&:nth-child(even)]:border-r-0 [&:nth-child(3)]:border-b-0"
+              >
+                <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></div>
+                <div className="text-white/20 text-5xl font-bold tracking-tighter mb-6">{div.num}</div>
+                <h3 className="text-lg font-bold tracking-tight uppercase text-white mb-3">{div.title}</h3>
+                <p className="text-white/55 text-sm leading-relaxed">{div.body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Operating Doctrine */}
+      <section className="py-24 relative border-b border-white/10 bg-zinc-950">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mb-16">
+            <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-white pl-4 py-1 mb-4">Doctrine</div>
+            <h2 className="text-2xl font-bold tracking-tighter uppercase mb-2">OUR OPERATING DOCTRINE</h2>
+            <div className="w-12 h-px bg-white mt-6"></div>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-white/10">
+            {[
+              { label: "Intelligence First", body: "Every decision is data-validated and competitor-aware." },
+              { label: "Systemic Execution", body: "We build interconnected infrastructures, not isolated campaigns." },
+              { label: "Scalable Architecture", body: "Solutions are engineered for long-term expansion." },
+              { label: "Market Control", body: "The objective is not participation. It is dominance." },
+            ].map((doc, i) => (
+              <div key={i} className="group p-8 md:p-10 border-b sm:border-b-0 sm:border-r border-white/10 hover:bg-white/[0.02] transition-colors duration-500 last:border-r-0">
+                <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></div>
+                <div className="text-white/20 text-xs tracking-[0.25em] uppercase font-mono mb-4">0{i + 1}</div>
+                <h3 className="text-base font-bold tracking-tight uppercase text-white mb-3">{doc.label}</h3>
+                <p className="text-white/50 text-sm leading-relaxed">{doc.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

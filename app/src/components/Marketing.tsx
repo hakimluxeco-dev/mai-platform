@@ -17,7 +17,7 @@ const stats = [
 ];
 
 const channels = [
-    { name: "Social Media Ads", pct: 92, color: "#3b82f6", sub: "Meta · LinkedIn · TikTok" },
+    { name: "Social Media Ads", pct: 92, color: "#3b82f6", sub: "Meta · LinkedIn · TikTok · YouTube" },
     { name: "SEO & Content", pct: 78, color: "#10b981", sub: "Organic growth engine" },
     { name: "Google PPC", pct: 85, color: "#f97316", sub: "Search & Display network" },
     { name: "Email Marketing", pct: 70, color: "#8b5cf6", sub: "Nurture & conversion flows" },

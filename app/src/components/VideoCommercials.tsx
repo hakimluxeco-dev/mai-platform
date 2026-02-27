@@ -80,6 +80,7 @@ export default function VideoCommercials() {
                             muted
                             loop
                             playsInline
+                            preload="auto"
                             poster="/cinematic_poster.png"
                         >
                             <source src="/cinematic_showreel.mp4" type="video/mp4" />
@@ -113,22 +114,23 @@ export default function VideoCommercials() {
 
                                 <div className="space-y-8 relative z-10 pb-4">
                                     {[
-                                        { label: "Audience Retention Time", val: "84%", w: "w-[84%]" },
-                                        { label: "Visual Engagement Rate", val: "92%", w: "w-[92%]" },
-                                        { label: "Conversion Lift (Video Embedded)", val: "67%", w: "w-[67%]" }
+                                        { label: "Audience Retention Time", val: "84%", color: "#3b82f6" },
+                                        { label: "Visual Engagement Rate", val: "92%", color: "#10b981" },
+                                        { label: "Conversion Lift (Video Embedded)", val: "67%", color: "#f97316" }
                                     ].map((stat, idx) => (
                                         <div key={idx}>
                                             <div className="flex justify-between items-end mb-2 text-xs font-bold tracking-widest uppercase">
                                                 <span className="text-white/70">{stat.label}</span>
-                                                <span className="text-white">{stat.val}</span>
+                                                <span style={{ color: stat.color }}>{stat.val}</span>
                                             </div>
-                                            <div className="h-1 w-full bg-white/10 relative overflow-hidden">
+                                            <div className="h-[3px] w-full bg-white/10 relative overflow-hidden rounded-none">
                                                 <motion.div
                                                     initial={{ width: 0 }}
                                                     whileInView={{ width: stat.val }}
                                                     viewport={{ once: true }}
-                                                    transition={{ duration: 1.5, delay: idx * 0.2 }}
-                                                    className="absolute top-0 left-0 h-full bg-white"
+                                                    transition={{ duration: 1.5, delay: idx * 0.2, ease: [0.16, 1, 0.3, 1] }}
+                                                    className="absolute top-0 left-0 h-full"
+                                                    style={{ background: stat.color }}
                                                 ></motion.div>
                                             </div>
                                         </div>

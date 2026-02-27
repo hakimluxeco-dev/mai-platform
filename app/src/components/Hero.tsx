@@ -89,10 +89,7 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             className="mb-8"
           >
-            <h1
-              className="text-5xl sm:text-6xl md:text-8xl lg:text-[6rem] xl:text-[7rem] font-bold tracking-tighter leading-[1] text-white drop-shadow-2xl"
-              style={{ fontFamily: "'Delluza', sans-serif" }}
-            >
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[6rem] xl:text-[7rem] font-bold tracking-tighter leading-[1] text-white drop-shadow-2xl">
               ENGINEERED<br />
               <span className="text-white/80 drop-shadow-2xl">FOR DOMINANCE.</span>
             </h1>

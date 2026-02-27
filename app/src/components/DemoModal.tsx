@@ -112,6 +112,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   <label htmlFor="modal-service" className="block text-xs font-bold text-white/70 mb-2 uppercase tracking-widest">Service Required</label>
                   <select id="modal-service" name="service" value={formData.service} onChange={handleChange} className="w-full bg-black border border-white/20 text-white focus:border-white text-sm rounded-none h-12 transition-colors uppercase outline-none px-3 appearance-none cursor-pointer" required disabled={isSubmitting}>
                     <option value="" disabled>SELECT SERVICE</option>
+                    <option value="Business Consulting">Business Consulting</option>
                     <option value="Marketing">Marketing</option>
                     <option value="Video Commercials">Video Commercials</option>
                     <option value="Software Development">Software Development</option>

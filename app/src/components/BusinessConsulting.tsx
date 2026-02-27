@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, TrendingUp, Target, BarChart3, Search, Shield, Zap, ArrowRight, ChevronRight } from "lucide-react";
 import Navbar from "./Navbar";
 import { Button } from "./ui/button";
 import SEO from "./SEO";
+import DemoModal from "./DemoModal";
 
 const services = [
     {
@@ -53,14 +55,9 @@ const doctrine = [
 
 export default function BusinessConsulting() {
     const navigate = useNavigate();
+    const [modalOpen, setModalOpen] = useState(false);
 
-    const handleContact = () => {
-        navigate("/");
-        setTimeout(() => {
-            const el = document.getElementById("contact");
-            if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-    };
+    const handleContact = () => setModalOpen(true);
 
     return (
         <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
@@ -265,5 +262,6 @@ export default function BusinessConsulting() {
                 </div>
             </section>
         </div>
+        <DemoModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     );
 }

@@ -95,7 +95,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-6 sm:pt-8 border-t border-white/10 flex flex-col items-center gap-3 sm:gap-4 mt-8">
           <p className="text-white/40 text-xs sm:text-sm text-center uppercase tracking-widest">
-            © {currentYear} <Link to="/" className="hover:text-white transition-colors">Mai Business Solutions</Link> & <a href="/marketing" className="hover:text-white transition-colors">Mai Marketing Solutions</a>. All rights reserved.
+            © {currentYear} <Link to="/" className="hover:text-white transition-colors">Mai Business Solutions</Link>. All rights reserved.
           </p>
           <div className="flex gap-6 sm:gap-8 mt-2">
             <a href="#" className="text-white/30 hover:text-white text-xs transition-colors uppercase tracking-widest">

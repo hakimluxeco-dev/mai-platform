@@ -99,7 +99,7 @@ export default function Contact() {
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-white">
               START YOUR<br />
-              <span className="text-white/60">PROJECT.</span>
+              <span className="text-white/60">PROJECT</span>
             </h2>
           </div>
           <p className="text-white/60 max-w-sm text-sm leading-relaxed">

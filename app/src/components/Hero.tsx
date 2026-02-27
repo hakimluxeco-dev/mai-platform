@@ -91,7 +91,7 @@ export default function Hero() {
           >
             <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[6rem] xl:text-[7rem] font-bold tracking-tighter leading-[1] text-white drop-shadow-2xl">
               ENGINEERED<br />
-              <span className="text-white/80 drop-shadow-2xl">FOR DOMINANCE.</span>
+              <span className="text-white/80 drop-shadow-2xl">FOR DOMINANCE</span>
             </h1>
           </motion.div>
 

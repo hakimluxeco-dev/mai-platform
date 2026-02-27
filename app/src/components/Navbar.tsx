@@ -91,6 +91,12 @@ export default function Navbar() {
               Systems
             </Link>
             <Link
+              to="/business-consulting"
+              className="text-white/70 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] uppercase font-semibold"
+            >
+              Consulting
+            </Link>
+            <Link
               to="/about"
               className="text-white/70 hover:text-white transition-colors duration-200 text-xs tracking-[0.2em] uppercase font-semibold"
             >

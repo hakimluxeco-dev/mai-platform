@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Code, Video, Megaphone, Cpu, ArrowRight, Zap, Shield, TrendingUp, Box } from "lucide-react";
+import { Code, Video, Megaphone, Cpu, ArrowRight, Zap, Shield, TrendingUp, Box, BarChart3 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
@@ -74,6 +74,17 @@ const products: Product[] = [
     cssGradient: "linear-gradient(135deg, #06b6d4, #10b981)",
     link: "/ai-systems",
   },
+  {
+    id: "business-consulting",
+    title: "Business Consulting",
+    description: "Strategic intelligence and competitive analysis to dissect markets, eliminate inefficiencies, and compound revenue.",
+    icon: <BarChart3 className="w-8 h-8" />,
+    features: ["Competitive Analysis", "Market Intelligence", "Revenue Architecture", "Growth Strategy"],
+    color: "teal",
+    gradient: "from-teal-500 to-sky-400",
+    cssGradient: "linear-gradient(135deg, #14b8a6, #38bdf8)",
+    link: "/business-consulting",
+  },
 ];
 
 export default function Products() {
@@ -124,7 +135,7 @@ export default function Products() {
         </div>
 
         {/* Products Grid - Architectural Layout */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-0 border border-white/10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-0 border border-white/10">
           {products.map((product, index) => (
             <motion.div
               key={product.id}

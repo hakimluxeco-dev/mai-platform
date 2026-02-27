@@ -15,6 +15,7 @@ import Marketing from "./components/Marketing";
 import VideoCommercials from "./components/VideoCommercials";
 import Animation3D from "./components/Animation3D";
 import About from "./components/About";
+import BusinessConsulting from "./components/BusinessConsulting";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import NotFound from "./components/NotFound";
 import InstallPrompt from "./components/InstallPrompt";
@@ -45,6 +46,7 @@ function App() {
           <Route path="/3d-animation" element={<Animation3D />} />
           <Route path="/software-development" element={<SoftwareDevelopment />} />
           <Route path="/ai-systems" element={<AISystems />} />
+          <Route path="/business-consulting" element={<BusinessConsulting />} />
 
           {/* Sub AI Systems (kept for backwards compatibility/direct linking) */}
           <Route path="/whatsapp-assistant" element={<WhatsappAssistant />} />

@@ -224,10 +224,6 @@ export default function Contact() {
             <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
 
             <div className="p-8 sm:p-12 border-b border-white/10 flex-grow">
-              <h3 className="text-2xl font-bold tracking-tight mb-2 uppercase text-white">WHY CHOOSE MAI?</h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-10">
-                We engineer elite digital architecture and high-performance business solutions.
-              </p>
 
               <div className="space-y-8">
                 <div className="flex items-start gap-4">

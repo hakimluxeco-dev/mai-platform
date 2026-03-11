@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowRight, UserPlus, MessageSquare, ShieldCheck, Zap } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import DemoModal from "./DemoModal";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SEO from "./SEO";
@@ -9,6 +10,7 @@ import { Button } from "./ui/button";
 
 export default function PackageSelection() {
     const navigate = useNavigate();
+    const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -20,9 +22,9 @@ export default function PackageSelection() {
             subtitle: "General Inquiry",
             description: "Request a custom assessment, project quote, or general information regarding our architectural business solutions.",
             icon: <MessageSquare className="w-8 h-8" />,
-            action: () => navigate("/#contact"),
+            onAction: () => setModalOpen(true),
             buttonLabel: "INITIATE INQUIRY",
-            link: "/#contact",
+            link: null,
             external: false,
             accent: "from-blue-600/20 to-transparent",
             iconColor: "text-blue-500"
@@ -32,7 +34,7 @@ export default function PackageSelection() {
             subtitle: "Direct Infrastructure",
             description: "Deploy services immediately. Create your enterprise account to select packages, manage assets, and track performance metrics.",
             icon: <UserPlus className="w-8 h-8" />,
-            action: () => window.location.href = "https://clientzone.maisolutions.co.za/signup",
+            onAction: () => window.location.href = "https://clientzone.maisolutions.co.za/signup",
             buttonLabel: "CREATE ACCOUNT",
             link: "https://clientzone.maisolutions.co.za/signup",
             external: true,
@@ -108,9 +110,20 @@ export default function PackageSelection() {
                                     </div>
 
                                     <div className="pt-8 border-t border-white/5">
-                                        {card.external ? (
+                                        {card.onAction ? (
+                                            <button
+                                                onClick={card.onAction}
+                                                className="inline-flex items-center gap-4 text-xs tracking-[0.3em] uppercase font-bold group/btn"
+                                            >
+                                                <span className="relative">
+                                                    {card.buttonLabel}
+                                                    <span className="absolute -bottom-2 left-0 w-0 h-px bg-gradient-to-r from-blue-500 to-cyan-400 group-hover/btn:w-full transition-all duration-500" />
+                                                </span>
+                                                <ArrowRight className={`w-4 h-4 group-hover/btn:translate-x-2 transition-transform ${card.iconColor}`} />
+                                            </button>
+                                        ) : card.external ? (
                                             <a
-                                                href={card.link}
+                                                href={card.link || "#"}
                                                 className="inline-flex items-center gap-4 text-xs tracking-[0.3em] uppercase font-bold group/btn"
                                             >
                                                 <span className="relative">
@@ -121,7 +134,7 @@ export default function PackageSelection() {
                                             </a>
                                         ) : (
                                             <Link
-                                                to={card.link}
+                                                to={card.link || "#"}
                                                 className="inline-flex items-center gap-4 text-xs tracking-[0.3em] uppercase font-bold group/btn"
                                             >
                                                 <span className="relative">
@@ -152,6 +165,7 @@ export default function PackageSelection() {
             </section>
 
             <Footer />
+            <DemoModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
         </div>
     );
 }

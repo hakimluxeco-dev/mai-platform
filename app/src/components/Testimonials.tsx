@@ -106,7 +106,7 @@ const Testimonials = () => {
           </motion.div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-white uppercase leading-none">
-              Verified <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Yields.</span>
+              Verified <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Yields</span>
             </h2>
             <p className="text-white/40 max-w-md text-sm sm:text-base leading-relaxed">
               Quantifiable results from enterprise deployments. Read how our elite digital infrastructure has accelerated growth for our partners.

@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { Megaphone, Target, BarChart, Activity, TrendingUp, ChevronRight, ArrowRight } from "lucide-react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -7,7 +6,6 @@ import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import SEO from "./SEO";
-import DemoModal from "./DemoModal";
 
 const stats = [
     { value: "400%", label: "Average ROI Increase", color: "#3b82f6" },
@@ -42,7 +40,6 @@ const results = [
 
 export default function Marketing() {
     const navigate = useNavigate();
-    const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -70,7 +67,7 @@ export default function Marketing() {
                             Elevate your brand, acquire high-value leads, and maximize your ROI with high-performance marketing architecture engineered to convert.
                         </p>
                         <Button
-                            onClick={() => setModalOpen(true)}
+                            onClick={() => navigate("/get-started")}
                             className="rounded-none h-14 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-10 font-bold transition-all group border border-white"
                         >
                             START YOUR CAMPAIGN
@@ -308,7 +305,7 @@ export default function Marketing() {
                         Connect with our engineering team to architect a custom marketing funnel designed for unbridled growth.
                     </p>
                     <Button
-                        onClick={() => setModalOpen(true)}
+                        onClick={() => navigate("/get-started")}
                         size="lg"
                         className="rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-12 font-bold transition-all group border border-white"
                     >
@@ -319,7 +316,6 @@ export default function Marketing() {
             </section>
 
             <Footer />
-            <DemoModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
         </div>
     );
 }

@@ -18,6 +18,7 @@ import About from "./components/About";
 import BusinessConsulting from "./components/BusinessConsulting";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import Careers from "./components/Careers";
+import PackageSelection from "./components/PackageSelection";
 import NotFound from "./components/NotFound";
 import InstallPrompt from "./components/InstallPrompt";
 import ScrollToTop from "./components/ScrollToTop";
@@ -60,6 +61,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/get-started" element={<PackageSelection />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </motion.main>

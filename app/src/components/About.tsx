@@ -36,16 +36,6 @@ export default function About() {
     }
   ];
 
-  const handleContactNavigate = () => {
-    navigate("/");
-    setTimeout(() => {
-      const element = document.getElementById("contact");
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
-  };
-
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
       <Navbar />
@@ -275,7 +265,7 @@ export default function About() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Button
-              onClick={handleContactNavigate}
+              onClick={() => navigate("/get-started")}
               size="lg"
               className="w-full sm:w-auto rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-12 font-bold transition-all group border border-white"
             >

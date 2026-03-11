@@ -5,30 +5,12 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { useEffect } from "react";
 
 export default function Animation3D() {
     const navigate = useNavigate();
-    const [isContactOpen, setIsContactOpen] = useState(false);
-    const [formData, setFormData] = useState({ name: "", email: "", company: "", message: "" });
-    const [sending, setSending] = useState(false);
-    const [sent, setSent] = useState(false);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setSending(true);
-        await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                access_key: "5a02c114-65b3-41ad-b0de-a18048ad3dec",
-                ...formData,
-                service: "3D Animations",
-                subject: `3D Quote Request from ${formData.name}`,
-            }),
-        });
-        setSending(false);
-        setSent(true);
-    };
+    useEffect(() => { window.scrollTo(0, 0); }, []);
 
     return (
         <div className="bg-black text-white min-h-screen">
@@ -68,7 +50,7 @@ export default function Animation3D() {
                             </p>
                             <div className="flex flex-wrap gap-4">
                                 <Button
-                                    onClick={() => setIsContactOpen(true)}
+                                    onClick={() => navigate("/get-started")}
                                     className="rounded-none h-14 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-10 font-bold transition-all"
                                 >
                                     GET A QUOTE
@@ -266,7 +248,7 @@ export default function Animation3D() {
                         </p>
                     </div>
                     <Button
-                        onClick={() => navigate("/")}
+                        onClick={() => navigate("/get-started")}
                         size="lg"
                         className="rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-16 font-bold transition-all shrink-0"
                     >
@@ -276,57 +258,6 @@ export default function Animation3D() {
             </section>
 
             <Footer />
-
-            {/* Contact Modal */}
-            {isContactOpen && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-                    <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => { setIsContactOpen(false); setSent(false); }} />
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="relative z-10 bg-black border border-white/15 p-8 sm:p-12 w-full max-w-lg"
-                    >
-                        <button onClick={() => { setIsContactOpen(false); setSent(false); }} className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors">
-                            <X className="w-5 h-5" />
-                        </button>
-
-                        {sent ? (
-                            <div className="text-center py-8">
-                                <h2 className="text-2xl font-bold tracking-tight mb-3">QUOTE REQUEST SENT</h2>
-                                <p className="text-white/60 text-sm">We'll get back to you within 24 hours.</p>
-                            </div>
-                        ) : (
-                            <>
-                                <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-white pl-4 py-1 mb-6">3D Animations // Quote</div>
-                                <h2 className="text-3xl font-bold tracking-tighter mb-8">GET A QUOTE</h2>
-                                <form onSubmit={handleSubmit} className="space-y-5">
-                                    <div className="grid sm:grid-cols-2 gap-5">
-                                        <div>
-                                            <label className="block text-[10px] tracking-widest uppercase text-white/50 mb-2">Name *</label>
-                                            <input required value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} placeholder="Your name" className="w-full bg-transparent border border-white/20 text-white placeholder:text-white/30 text-sm px-3 h-11 outline-none focus:border-white transition-colors" />
-                                        </div>
-                                        <div>
-                                            <label className="block text-[10px] tracking-widest uppercase text-white/50 mb-2">Email *</label>
-                                            <input required type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))} placeholder="your@email.com" className="w-full bg-transparent border border-white/20 text-white placeholder:text-white/30 text-sm px-3 h-11 outline-none focus:border-white transition-colors" />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label className="block text-[10px] tracking-widest uppercase text-white/50 mb-2">Company</label>
-                                        <input value={formData.company} onChange={e => setFormData(p => ({ ...p, company: e.target.value }))} placeholder="Company name" className="w-full bg-transparent border border-white/20 text-white placeholder:text-white/30 text-sm px-3 h-11 outline-none focus:border-white transition-colors" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-[10px] tracking-widest uppercase text-white/50 mb-2">Project Brief *</label>
-                                        <textarea required rows={4} value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))} placeholder="Describe your 3D project..." className="w-full bg-transparent border border-white/20 text-white placeholder:text-white/30 text-sm px-3 py-3 outline-none focus:border-white transition-colors resize-none" />
-                                    </div>
-                                    <Button type="submit" disabled={sending} className="w-full rounded-none h-12 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] font-bold transition-all">
-                                        {sending ? "SENDING..." : "SEND REQUEST →"}
-                                    </Button>
-                                </form>
-                            </>
-                        )}
-                    </motion.div>
-                </div>
-            )}
         </div>
     );
 }

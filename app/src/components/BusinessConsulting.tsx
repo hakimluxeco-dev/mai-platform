@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, TrendingUp, Target, BarChart3, Search, Shield, Zap, ArrowRight, ChevronRight } from "lucide-react";
 import Navbar from "./Navbar";
 import { Button } from "./ui/button";
 import SEO from "./SEO";
-import DemoModal from "./DemoModal";
 
 const services = [
     {
@@ -55,9 +53,6 @@ const doctrine = [
 
 export default function BusinessConsulting() {
     const navigate = useNavigate();
-    const [modalOpen, setModalOpen] = useState(false);
-
-    const handleContact = () => setModalOpen(true);
 
     return (
         <>
@@ -123,7 +118,7 @@ export default function BusinessConsulting() {
                                 transition={{ duration: 1, delay: 0.5 }}
                             >
                                 <Button
-                                    onClick={handleContact}
+                                    onClick={() => navigate("/get-started")}
                                     className="rounded-none h-14 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-10 font-bold transition-all group border border-white"
                                 >
                                     REQUEST INTELLIGENCE BRIEF
@@ -253,7 +248,7 @@ export default function BusinessConsulting() {
                             Book a strategic consultation. We'll audit your market position and deliver a structured intelligence brief within 48 hours.
                         </p>
                         <Button
-                            onClick={handleContact}
+                            onClick={() => navigate("/get-started")}
                             size="lg"
                             className="rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-12 font-bold transition-all group border border-white"
                         >
@@ -263,7 +258,6 @@ export default function BusinessConsulting() {
                     </div>
                 </section>
             </div>
-            <DemoModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
         </>
     );
 }

@@ -75,14 +75,15 @@ export default function CustomSystems() {
     }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission
-  };
+  // Removed handleSubmit function as it's no longer used for form submission
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   console.log("Form submitted:", formData);
+  //   // Handle form submission
+  // };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
+    <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black">
       <SEO
         title="Custom Systems - Mai Business Solutions"
         description="Bespoke automation solutions built specifically for your business needs"
@@ -225,14 +226,16 @@ export default function CustomSystems() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Removed form element and its onSubmit handler as the button now navigates directly */}
+                {/* <form onSubmit={handleSubmit} className="space-y-6"> */}
+                <div className="space-y-6"> {/* Replaced form with a div */}
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-gray-300">Name *</Label>
                     <Input
                       id="name"
                       required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      // value={formData.name} // Removed value and onChange as formData is removed
+                      // onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="bg-gray-800/50 border-gray-700 text-white focus:border-blue-500"
                       placeholder="Your full name"
                     />
@@ -244,8 +247,8 @@ export default function CustomSystems() {
                       id="email"
                       type="email"
                       required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      // value={formData.email} // Removed value and onChange as formData is removed
+                      // onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="bg-gray-800/50 border-gray-700 text-white focus:border-blue-500"
                       placeholder="your@email.com"
                     />
@@ -255,8 +258,8 @@ export default function CustomSystems() {
                     <Label htmlFor="company" className="text-gray-300">Company</Label>
                     <Input
                       id="company"
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      // value={formData.company} // Removed value and onChange as formData is removed
+                      // onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       className="bg-gray-800/50 border-gray-700 text-white focus:border-blue-500"
                       placeholder="Your company name"
                     />
@@ -267,21 +270,22 @@ export default function CustomSystems() {
                     <Textarea
                       id="message"
                       required
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      // value={formData.message} // Removed value and onChange as formData is removed
+                      // onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="bg-gray-800/50 border-gray-700 text-white focus:border-blue-500 min-h-32"
                       placeholder="Describe the problem you're trying to solve or the system you need..."
                     />
                   </div>
 
                   <Button
-                    type="submit"
+                    // Removed type="submit"
+                    onClick={() => navigate("/get-started")}
                     className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white text-lg py-6"
                   >
                     Request Free Consultation
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
-                </form>
+                </div> {/* Closing div that replaced form */}
               </CardContent>
             </Card>
           </div>

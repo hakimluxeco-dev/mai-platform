@@ -91,8 +91,14 @@ export default function Products() {
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const handleLearnMore = (link: string) => {
-    navigate(link);
+  const handleLearnMore = (id: string, link: string) => {
+    // Set hovered state to trigger visual feedback
+    setHoveredProduct(id);
+    
+    // Tactile delay to allow user to see the card's active color state
+    setTimeout(() => {
+      navigate(link);
+    }, 400);
   };
 
   return (
@@ -183,7 +189,7 @@ export default function Products() {
                 </div>
 
                 <Button
-                  onClick={() => handleLearnMore(product.link)}
+                  onClick={() => handleLearnMore(product.id, product.link)}
                   className={`w-full py-6 rounded-none bg-transparent hover:bg-white text-white hover:text-black border border-white/20 hover:border-white group/btn text-xs tracking-[0.15em] font-bold transition-all duration-300 mt-auto`}
                 >
                   EXPLORE

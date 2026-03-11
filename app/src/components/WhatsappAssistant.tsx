@@ -14,16 +14,6 @@ export default function WhatsappAssistant() {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleContactNavigate = () => {
-    navigate("/");
-    setTimeout(() => {
-      const element = document.getElementById("contact");
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
-  };
-
   const features = [
     {
       icon: Clock,
@@ -93,7 +83,7 @@ export default function WhatsappAssistant() {
               Your autonomous sales agent that engages leads synchronously, qualifies prospects securely, and scales client communications over an active encrypted network.
             </p>
             <Button
-              onClick={handleContactNavigate}
+              onClick={() => navigate("/get-started")}
               className="rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-10 font-bold transition-all group border border-white"
             >
               DEPLOY SYSTEM <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />

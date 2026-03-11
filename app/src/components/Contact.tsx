@@ -94,12 +94,12 @@ export default function Contact() {
         {/* Section Header */}
         <div className="text-left mb-16 sm:mb-24 flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-8 gap-8">
           <div className="max-w-3xl">
-            <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-white pl-4 py-1 mb-6">
+            <div className="text-white/50 text-xs tracking-[0.3em] uppercase font-bold border-l-2 border-blue-500 pl-4 py-1 mb-6">
               Contact Us
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-white">
               START YOUR<br />
-              <span className="text-white/60">PROJECT</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-400 to-cyan-400">PROJECT</span>
             </h2>
           </div>
           <p className="text-white/60 max-w-sm text-sm leading-relaxed">
@@ -109,8 +109,9 @@ export default function Contact() {
 
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-0 border border-white/10">
           {/* Contact Form */}
-          <div className="p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-white/10 relative group bg-black hover:bg-white/[0.02] transition-colors duration-500">
-            <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
+          <div className="p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-white/10 relative group bg-black hover:bg-white/[0.02] transition-colors duration-500 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+            <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-blue-600/0 via-blue-500 to-blue-600/0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
 
             <h3 className="text-2xl font-bold tracking-tight mb-2 uppercase text-white">CONTACT US</h3>
             <p className="text-white/60 text-sm leading-relaxed mb-10">
@@ -211,7 +212,7 @@ export default function Contact() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-10 font-bold transition-all group border border-white mt-4"
+                className="w-full rounded-none h-16 bg-white text-black hover:bg-gradient-to-r hover:from-blue-600 hover:to-cyan-500 hover:text-white hover:border-transparent text-sm tracking-[0.15em] px-10 font-bold transition-all group border border-white mt-4"
               >
                 {isSubmitting ? "SENDING..." : "SEND EMAIL"}
                 <Send className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
@@ -220,15 +221,16 @@ export default function Contact() {
           </div>
 
           {/* Contact Information & Value Prop */}
-          <div className="flex flex-col relative group bg-black hover:bg-white/[0.02] transition-colors duration-500">
-            <div className="absolute top-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
+          <div className="flex flex-col relative group bg-black hover:bg-white/[0.02] transition-colors duration-500 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-bl from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+            <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-cyan-400/0 via-cyan-400 to-cyan-400/0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-20"></div>
 
             <div className="p-8 sm:p-12 border-b border-white/10 flex-grow">
 
               <div className="space-y-8">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 border border-white/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm font-bold">01</span>
+                  <div className="w-10 h-10 border border-cyan-500/40 group-hover:border-cyan-400 flex items-center justify-center flex-shrink-0 transition-colors">
+                    <span className="text-cyan-400 text-sm font-bold">01</span>
                   </div>
                   <div>
                     <h4 className="font-bold text-sm tracking-widest uppercase text-white mb-2">Elite Infrastructure</h4>
@@ -238,8 +240,8 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 border border-white/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm font-bold">02</span>
+                  <div className="w-10 h-10 border border-cyan-500/40 group-hover:border-cyan-400 flex items-center justify-center flex-shrink-0 transition-colors">
+                    <span className="text-cyan-400 text-sm font-bold">02</span>
                   </div>
                   <div>
                     <h4 className="font-bold text-sm tracking-widest uppercase text-white mb-2">Verified Yields</h4>
@@ -249,8 +251,8 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 border border-white/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm font-bold">03</span>
+                  <div className="w-10 h-10 border border-cyan-500/40 group-hover:border-cyan-400 flex items-center justify-center flex-shrink-0 transition-colors">
+                    <span className="text-cyan-400 text-sm font-bold">03</span>
                   </div>
                   <div>
                     <h4 className="font-bold text-sm tracking-widest uppercase text-white mb-2">Continuous Operations</h4>
@@ -263,38 +265,41 @@ export default function Contact() {
             </div>
 
             <div className="grid sm:grid-cols-3 gap-0">
-              <div className="p-8 border-b sm:border-b-0 sm:border-r border-white/10 flex items-center gap-4 hover:bg-white/[0.04] transition-colors cursor-pointer group/link">
-                <Mail className="w-5 h-5 text-white/40 group-hover/link:text-white transition-colors" />
-                <div className="min-w-0">
-                  <p className="text-xs text-white/40 font-bold tracking-widest uppercase mb-1">
+              <div className="p-6 lg:p-4 xl:p-8 border-b sm:border-b-0 sm:border-r border-white/10 flex flex-col items-start gap-4 hover:bg-white/[0.04] transition-colors cursor-pointer group/link">
+                <Mail className="w-6 h-6 sm:w-5 sm:h-5 text-white/40 group-hover/link:text-white transition-colors shrink-0" />
+                <div className="min-w-0 w-full">
+                  <p className="text-[10px] text-white/40 font-bold tracking-widest uppercase mb-1 line-clamp-1">
                     Secure Comm
                   </p>
-                  <p className="text-sm text-white font-mono truncate">
+                  <p className="text-[10px] sm:text-[11px] xl:text-xs text-white font-mono uppercase">
                     INFO@MAISOLUTIONS.CO.ZA
                   </p>
                 </div>
               </div>
 
-              <div className="p-8 border-b sm:border-b-0 sm:border-r border-white/10 flex items-center gap-4 hover:bg-white/[0.04] transition-colors cursor-pointer group/link">
-                <MessageCircle className="w-5 h-5 text-white/40 group-hover/link:text-white transition-colors" />
-                <div>
-                  <p className="text-xs text-white/40 font-bold tracking-widest uppercase mb-1">
+              <div className="p-6 lg:p-4 xl:p-8 border-b sm:border-b-0 sm:border-r border-white/10 flex flex-col items-start gap-4 hover:bg-white/[0.04] transition-colors cursor-pointer group/link">
+                <MessageCircle className="w-6 h-6 sm:w-5 sm:h-5 text-white/40 group-hover/link:text-white transition-colors shrink-0" />
+                <div className="min-w-0 w-full">
+                  <p className="text-[10px] text-white/40 font-bold tracking-widest uppercase mb-1 line-clamp-1">
                     Direct Wire
                   </p>
-                  <p className="text-sm text-white font-mono">
+                  <p className="text-[10px] sm:text-[11px] xl:text-xs text-white font-mono whitespace-nowrap uppercase">
+                    +27 82 293 9948
+                  </p>
+                  <p className="text-[10px] sm:text-[11px] xl:text-xs text-white font-mono whitespace-nowrap uppercase">
                     +27 72 845 6172
                   </p>
                 </div>
               </div>
 
-              <div className="p-8 flex items-center gap-4 hover:bg-white/[0.04] transition-colors group/link">
-                <svg className="w-5 h-5 text-white/40 group-hover/link:text-white transition-colors shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" /></svg>
-                <div>
-                  <p className="text-xs text-white/40 font-bold tracking-widest uppercase mb-1">
+              <div className="p-6 lg:p-4 xl:p-8 flex flex-col items-start gap-4 hover:bg-white/[0.04] transition-colors group/link">
+                <svg className="w-6 h-6 sm:w-5 sm:h-5 text-white/40 group-hover/link:text-white transition-colors shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" /></svg>
+                <div className="min-w-0 w-full">
+                  <p className="text-[10px] text-white/40 font-bold tracking-widest uppercase mb-1 line-clamp-1">
                     Location
                   </p>
-                  <p className="text-sm text-white font-mono">
-                    215 Beauval Ave, Mondeor
+                  <p className="text-[10px] sm:text-[11px] xl:text-xs text-white font-mono uppercase leading-relaxed">
+                    215 Beauval Ave,<br/>Mondeor
                   </p>
                 </div>
               </div>

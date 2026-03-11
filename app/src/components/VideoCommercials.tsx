@@ -14,16 +14,6 @@ export default function VideoCommercials() {
         window.scrollTo(0, 0);
     }, []);
 
-    const handleContactNavigate = () => {
-        navigate("/");
-        setTimeout(() => {
-            const element = document.getElementById("contact");
-            if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-            }
-        }, 100);
-    };
-
     return (
         <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black">
             <SEO title="Video Production & Commercials South Africa | MAI Business Solutions" description="Cinematic, high-impact corporate videos and commercials engineered to captivate your audience. Corporate storytelling, social media ads, product showcases and event coverage." keywords="video production South Africa, corporate video Johannesburg, TV commercial production, product video, social media video ads, cinematic marketing South Africa, MAI Video" canonicalUrl="/video-commercials" />
@@ -218,7 +208,7 @@ export default function VideoCommercials() {
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-6">
                         <Button
-                            onClick={handleContactNavigate}
+                            onClick={() => navigate("/get-started")}
                             size="lg"
                             className="w-full sm:w-auto rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-12 font-bold transition-all group border border-white"
                         >

@@ -3,6 +3,8 @@ import SEO from "./SEO";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 import Products from "./Products";
+import Brands from "./Brands";
+import Testimonials from "./Testimonials";
 import Contact from "./Contact";
 import Footer from "./Footer";
 
@@ -36,6 +38,14 @@ function Home() {
 
       <motion.div {...fadeIn(0.3)}>
         <Products />
+      </motion.div>
+
+      <motion.div {...fadeIn(0.4)}>
+        <Testimonials />
+      </motion.div>
+
+      <motion.div {...fadeIn(0.45)}>
+        <Brands />
       </motion.div>
 
       <motion.div {...fadeIn(0.5)}>

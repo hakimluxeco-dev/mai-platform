@@ -14,16 +14,6 @@ export default function StockManager() {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleContactNavigate = () => {
-    navigate("/");
-    setTimeout(() => {
-      const element = document.getElementById("contact");
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
-  };
-
   const features = [
     {
       icon: TrendingUp,

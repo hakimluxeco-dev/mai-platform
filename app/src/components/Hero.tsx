@@ -1,11 +1,11 @@
-import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
-import DemoModal from "./DemoModal";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const scrollToSolutions = () => {
     const element = document.getElementById("solutions");
@@ -29,11 +29,6 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen pt-32 pb-24 flex items-center justify-center overflow-hidden bg-black text-white"
     >
-      <DemoModal
-        isOpen={isDemoModalOpen}
-        onClose={() => setIsDemoModalOpen(false)}
-        productName="MAI Business Solutions"
-      />
 
       {/* Background Cinematic Slider */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black pointer-events-none select-none">
@@ -77,8 +72,8 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.1 }}
             className="mb-8 overflow-hidden"
           >
-            <div className="text-white/80 drop-shadow-lg text-xs sm:text-sm tracking-[0.4em] uppercase font-bold border-l-2 border-white pl-4 py-1">
-              Strategic Intelligence // Active
+            <div className="text-white drop-shadow-lg text-xs tracking-[0.4em] uppercase font-bold border-l-2 border-white pl-4 py-1.5 flex items-center gap-3">
+              <span className="opacity-40">|</span> STRATEGIC INTELLIGENCE
             </div>
           </motion.div>
 
@@ -121,18 +116,18 @@ export default function Hero() {
               <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
             </Button>
             <Button
-              onClick={() => setIsDemoModalOpen(true)}
+              onClick={() => navigate("/get-started")}
               size="lg"
               variant="outline"
               className="rounded-none h-16 bg-transparent border-white text-white hover:bg-white/10 hover:backdrop-blur-sm text-sm tracking-[0.15em] px-12 font-bold transition-all"
             >
-              INITIATE CONTACT
+              GET STARTED
             </Button>
           </motion.div>
         </div>
 
         {/* Right Column - Google model-viewer 3D Robot */}
-        <div className="h-[350px] sm:h-[450px] lg:h-[700px] w-full relative z-40">
+        <div className="h-[300px] sm:h-[450px] lg:h-[700px] w-full relative z-40 transform-gpu">
           {/* @ts-ignore - model-viewer is a web component loaded via CDN */}
           <model-viewer
             src="/models/scene.glb"

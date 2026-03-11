@@ -4,8 +4,10 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Button } from "./ui/button";
 import SEO from "./SEO";
+import { useNavigate } from "react-router-dom";
 
 export default function SoftwareDevelopment() {
+    const navigate = useNavigate();
     return (
         <div className="min-h-screen bg-black text-white font-sans">
             <SEO title="Custom Software Development South Africa | MAI Business Solutions" description="Custom-built web applications, mobile apps, and CRMs engineered for performance, security, and scale. Enterprise software development in South Africa." keywords="custom software development South Africa, web app development Johannesburg, mobile app development, CRM development, custom API, enterprise software, MAI Software" canonicalUrl="/software-development" />
@@ -36,11 +38,12 @@ export default function SoftwareDevelopment() {
                             Custom-built web applications, mobile apps, and CRMs engineered for performance, security, and enterprise scale.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6">
-                            <a href="/#contact" className="inline-block">
-                                <Button className="rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-10 font-bold transition-all group border border-white">
-                                    INITIALIZE BUILD <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                                </Button>
-                            </a>
+                            <Button
+                                onClick={() => navigate("/get-started")}
+                                className="rounded-none h-16 bg-white text-black hover:bg-neutral-200 text-sm tracking-[0.15em] px-10 font-bold transition-all group border border-white"
+                            >
+                                INITIALIZE BUILD <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                            </Button>
                         </div>
                     </motion.div>
                 </div>

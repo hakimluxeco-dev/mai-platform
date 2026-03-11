@@ -1,5 +1,5 @@
 import Logo from "./Logo";
-import { Linkedin, Twitter, Github, Mail } from "lucide-react";
+import { Linkedin, Twitter, Github, Instagram, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -34,6 +34,28 @@ export default function Footer() {
               >
                 <Github className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
               </a>
+              <a
+                href="#"
+                className="w-10 h-10 border border-white/10 hover:border-white/40 hover:bg-white/[0.02] flex items-center justify-center transition-all group"
+              >
+                <Instagram className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 border border-white/10 hover:border-white/40 hover:bg-white/[0.02] flex items-center justify-center transition-all group"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-4 h-4 text-white/40 group-hover:text-white transition-colors"
+                >
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
+              </a>
             </div>
           </div>
 
@@ -66,6 +88,11 @@ export default function Footer() {
                   Autonomous Intelligence
                 </Link>
               </li>
+              <li>
+                <Link to="/business-consulting" className="text-white/50 hover:text-white text-xs sm:text-sm transition-colors uppercase tracking-wider block">
+                  Strategic Consulting
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -79,8 +106,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-white/50 hover:text-white text-xs sm:text-sm transition-colors uppercase tracking-wider block">
+                <Link to="/careers" className="text-white/50 hover:text-white text-xs sm:text-sm transition-colors uppercase tracking-wider block">
                   Careers
+                </Link>
+              </li>
+              <li>
+                <a href="https://clientzone.maisolutions.co.za" className="text-white/50 hover:text-white text-xs sm:text-sm transition-colors uppercase tracking-wider block">
+                  Login
                 </a>
               </li>
               <li>

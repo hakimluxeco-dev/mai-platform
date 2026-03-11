@@ -98,7 +98,7 @@ const Brands = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-white/50 text-sm font-semibold uppercase tracking-[0.4em] text-center"
         >
-          Some Brands We've Worked With
+          Trusted By
         </motion.h3>
 
         <motion.div

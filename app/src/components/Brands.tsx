@@ -9,9 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const allBrands = [
   // Real Logos
   { name: "Hypermeat",       logo: "/brands/hypermeat.png" },
-  { name: "KFC",             logo: "/brands/kfc.png" },
   { name: "Senhor Prego",    logo: "/brands/senhor-prego.jpg" },
-  { name: "McDonalds",       logo: "/brands/mcdonalds.png" },
   { name: "Truro Biltong",   logo: "/brands/truro.png" },
   { name: "Langebaan Meats", logo: "/brands/langebaan-meats.jpg" },
   // Generated Logos

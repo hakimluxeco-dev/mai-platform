@@ -71,7 +71,7 @@ export default function PackageSelection() {
                         </div>
                         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter leading-[0.95] uppercase mb-8">
                             CHOOSE YOUR<br />
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-400 to-cyan-400">DEPLOYMENT PATH.</span>
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-400 to-cyan-400">DEPLOYMENT PATH</span>
                         </h1>
                         <p className="text-white/50 text-lg md:text-xl max-w-2xl leading-relaxed font-light tracking-wide italic border-l border-white/10 pl-6">
                             Select the entry point that aligns with your operational objectives.

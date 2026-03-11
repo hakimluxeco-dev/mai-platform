@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function StockManager() {
   const navigate = useNavigate();
+  const handleContactNavigate = () => navigate("/get-started");
 
   useEffect(() => {
     window.scrollTo(0, 0);

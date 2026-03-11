@@ -10,6 +10,7 @@ import { X } from "lucide-react";
 
 export default function LeadMachine() {
   const navigate = useNavigate();
+  const handleContactNavigate = () => navigate("/get-started");
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
   useEffect(() => {

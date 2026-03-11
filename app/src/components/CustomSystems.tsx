@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SEO from "./SEO";
 import { Sparkles, Workflow, BarChart3, FileText, Wrench, ArrowRight } from "lucide-react";
 import Navbar from "./Navbar";
@@ -11,6 +12,7 @@ import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 
 export default function CustomSystems() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",

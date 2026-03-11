@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function InvoiceManager() {
   const navigate = useNavigate();
+  const handleContactNavigate = () => navigate("/get-started");
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
   useEffect(() => {
